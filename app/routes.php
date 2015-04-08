@@ -13,5 +13,5 @@
 
 Route::get('/', function()
 {
-	return View::make('layouts.default');
+	return View::make('dashboard')->with('title','Dashboard');
 });
