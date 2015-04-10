@@ -17,6 +17,7 @@
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
         {{ $warning }}
     </div>
+
 @endif
 
 @if($info = Session::get('info'))
@@ -24,6 +25,7 @@
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
         {{ $info }}
     </div>
+
 @endif
 
 @if (!$errors->isEmpty())
