@@ -9,12 +9,10 @@ class AuthController extends \BaseController {
 
 	public function doLogin()
 	{
-		//return "test";
-		$rules = array
-		(
+		$rules = [
 					'email'    => 'required',
 					'password' => 'required'
-		);
+		];
 		$allInput = Input::all();
 		$validation = Validator::make($allInput, $rules);
 
@@ -30,11 +28,10 @@ class AuthController extends \BaseController {
 		} else
 		{
 
-			$credentials = array
-			(
+			$credentials = [
 						'email'    => Input::get('email'),
 						'password' => Input::get('password')
-			);
+			];
 
 			if (Auth::attempt($credentials))
 			{

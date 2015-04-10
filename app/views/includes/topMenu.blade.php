@@ -103,8 +103,8 @@
                             <li class="divider">
                             </li>
                             <li>
-                                <a href="extra_lock.html">
-                                    <i class="icon-lock"></i> Lock Screen </a>
+                                <a href="{{route('password.change')}}">
+                                    <i class="icon-lock"></i> Change Password </a>
                             </li>
                             <li>
                                 <a href="{{route('logout')}}">
