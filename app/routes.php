@@ -16,6 +16,7 @@ Route::get('/', function()
 	return Redirect::route('login');
 });
 Route::group(['before' => 'guest'], function(){
+	Route::controller('password', 'RemindersController');
 	Route::get('login', ['as'=>'login','uses' => 'AuthController@login']);
 	Route::post('login', array('uses' => 'AuthController@doLogin'));
 });

@@ -8,7 +8,7 @@
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="utf-8"/>
-    <title>{{$title}} | {{Config::get('customConfig.names.siteName')}}</title>
+    <title>{{$title or "Reset Password"}} | {{Config::get('customConfig.names.siteName')}}</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
@@ -49,16 +49,16 @@
 <!-- END LOGO -->
 <!-- BEGIN LOGIN -->
 <div class="content">
-    <!-- BEGIN LOGIN FORM -->
 
-
-    {{ Form::open(array('route' => 'login', 'method' => 'post', 'class' => 'form-signin')) }}
+    {{ Form::open(['class' => 'form-signin']) }}
+    <input type='hidden' name='token' value="{{$token}}">
 
     <div class="form-title text-center">
-        <span class="form-title">Welcome.</span>
-        <span class="form-subtitle">log in now</span>
+        <span class="form-title">Forget Password?</span>
+        <span class="form-subtitle">Reset Now.</span>
     </div>
     <div class="login-wrap">
+
         @include('includes.alert')
 
         <div class="form-group">
@@ -75,51 +75,24 @@
 
         </div>
 
+        <div class="form-group">
+            {{ Form::label('password_confirmation', 'Password', array('class' => 'control-label visible-ie8 visible-ie9')) }}
+
+            {{ Form::password('password_confirmation', array('class' => 'form-control form-control-solid placeholder-no-fix', 'placeholder' => 'Confirm New Password')) }}
+
+        </div>
+
 
 
         <div class="form-actions">
-            {{ Form::submit('Log in', array('class' => 'btn btn-primary btn-block uppercase')) }}
+            {{ Form::submit('Reset Password', array('class' => 'btn btn-primary btn-block uppercase')) }}
         </div>
-        <label class="checkbox">
-            <span class="pull-right">
-                <a data-toggle="modal" href="#myModal"> Forgot Password?</a>
-            </span>
-        </label>
+
 
     </div>
 
     {{ Form::close() }}
 
-
-    <!-- END LOGIN FORM -->
-    <!-- BEGIN FORGOT PASSWORD FORM -->
-    <!-- Modal -->
-    <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title">Forgot Password ?</h4>
-                </div>
-                <div class="modal-body">
-                    <p>Enter your e-mail address below to reset your password.</p>
-                    {{ Form::open(array('action' => 'RemindersController@postRemind', 'method' => 'post')) }}
-
-                    {{ Form::email('email', '', array('class' => 'form-control placeholder-no-fix', 'placeholder' => 'Email Address', 'autocomplete'=>'off')) }}
-                </div>
-                <div class="modal-footer">
-                    <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
-
-                    {{ Form::submit('Submit', array('class' => 'btn btn-success')) }}
-                    {{ Form::close() }}
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- modal -->
-    <!-- END FORGOT PASSWORD FORM -->
-
-</div>
 <div class="copyright hide">
     2014 © Metronic. Admin Dashboard Template.
 </div>
