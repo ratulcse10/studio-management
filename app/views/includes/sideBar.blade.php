@@ -17,7 +17,7 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{{route('student.index')}}">
                     <i class="icon-user"></i>
                     <span class="title">Students</span>
                 </a>

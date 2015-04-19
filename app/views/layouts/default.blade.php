@@ -80,6 +80,7 @@
 {{ HTML::script('assets/global/scripts/metronic.js') }}
 {{ HTML::script('assets/admin/layout2/scripts/layout.js') }}
 {{ HTML::script('assets/admin/layout2/scripts/demo.js') }}
+@yield('script')
 
 <script>
     jQuery(document).ready(function() {

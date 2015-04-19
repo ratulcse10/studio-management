@@ -10,7 +10,9 @@ class StudentController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		return View::make('students.index')
+					->with('students',Student::all())
+					->with('title',"Students");
 	}
 
 	/**
