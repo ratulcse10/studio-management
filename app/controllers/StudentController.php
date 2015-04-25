@@ -43,7 +43,7 @@ class StudentController extends \BaseController {
 					'address'    => 'required',
 					'city'       => 'required',
 					'state'      => 'required',
-					'zip'        => 'required',
+					'zipcode'    => 'required',
 					'phone'      => 'required',
 					'dob'        => 'required',
 					'gender'     => 'required'
@@ -65,7 +65,7 @@ class StudentController extends \BaseController {
 		$student->address = $data['address'];
 		$student->city = $data['city'];
 		$student->state = $data['state'];
-		$student->zipcode = $data['zip'];
+		$student->zipcode = $data['zipcode'];
 		$student->phone = $data['phone'];
 		$student->dob = $data['dob'];
 		$student->gender = $data['gender'];
@@ -98,7 +98,15 @@ class StudentController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		try{
+			$student = Student::findOrFail($id);
+			return View::make('students.edit')
+						->with('student',$student)
+						->with('title','Edit Student');
+		}catch(Exception $ex){
+			return Redirect::route('student.index')->with('error','Something went wrong.Try Again.');
+		}
+
 	}
 
 	/**
@@ -110,7 +118,45 @@ class StudentController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$rules = [
+
+					'first_name' => 'required',
+					'last_name'  => 'required',
+					'address'    => 'required',
+					'city'       => 'required',
+					'state'      => 'required',
+					'zipcode'    => 'required',
+					'phone'      => 'required',
+					'dob'        => 'required',
+					'gender'     => 'required'
+		];
+
+		$data = Input::all();
+
+		$validator = Validator::make($data,$rules);
+
+		if($validator->fails()){
+			return Redirect::back()->withInput()->withErrors($validator);
+		}
+
+		$student = Student::find($id);
+
+		$student->first_name = $data['first_name'];
+		$student->last_name = $data['last_name'];
+		$student->address = $data['address'];
+		$student->city = $data['city'];
+		$student->state = $data['state'];
+		$student->zipcode = $data['zipcode'];
+		$student->phone = $data['phone'];
+		$student->dob = $data['dob'];
+		$student->gender = $data['gender'];
+
+		if($student->save()){
+			return Redirect::route('student.index')->with('success','Student Updated Successfully.');
+		}else{
+			return Redirect::route('student.index')->with('error','Something went wrong.Try Again.');
+		}
+
 	}
 
 	/**

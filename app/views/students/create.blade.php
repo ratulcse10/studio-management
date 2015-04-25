@@ -62,9 +62,9 @@
                     </div>
 
                     <div class="form-group">
-                        {{ Form::label('zip', 'Zip Code*', array('class' => 'col-md-2 control-label')) }}
+                        {{ Form::label('zipcode', 'Zip Code*', array('class' => 'col-md-2 control-label')) }}
                         <div class="col-md-4">
-                            {{ Form::text('zip', '', array('class' => 'form-control', 'placeholder' => 'Zip Code')) }}
+                            {{ Form::text('zipcode', '', array('class' => 'form-control', 'placeholder' => 'Zip Code')) }}
                         </div>
                     </div>
 
