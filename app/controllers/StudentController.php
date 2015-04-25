@@ -23,7 +23,8 @@ class StudentController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		return View::make('students.create')
+					->with('title',"Create Student");
 	}
 
 	/**
@@ -34,7 +35,46 @@ class StudentController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		//return Input::all();
+		$rules = [
+					'first_name' => 'required',
+					'last_name'  => 'required',
+					'email'      => 'required|email|unique:students',
+					'address'    => 'required',
+					'city'       => 'required',
+					'state'      => 'required',
+					'zip'        => 'required',
+					'phone'      => 'required',
+					'dob'        => 'required',
+					'gender'     => 'required'
+
+		];
+
+		$data = Input::all();
+
+		$validator = Validator::make($data,$rules);
+		if($validator->fails()){
+			return Redirect::back()->withInput()->withErrors($validator);
+		}
+
+		$student = new Student;
+
+		$student->first_name = $data['first_name'];
+		$student->last_name = $data['last_name'];
+		$student->email = $data['email'];
+		$student->address = $data['address'];
+		$student->city = $data['city'];
+		$student->state = $data['state'];
+		$student->zipcode = $data['zip'];
+		$student->phone = $data['phone'];
+		$student->dob = $data['dob'];
+		$student->gender = $data['gender'];
+
+		if($student->save()){
+			return Redirect::route('student.index')->with('success','Student Created Successfully.');
+		}else{
+			return Redirect::route('student.index')->with('error','Something went wrong.Try Again.');
+		}
 	}
 
 	/**

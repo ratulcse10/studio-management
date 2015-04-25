@@ -8,7 +8,7 @@
                 <header class="panel-heading clearfix">
                     <span class="pull-right">
 
-                            <a class="btn btn-success btn-sm btn-new-user" href="{{ URL::route('student.create') }}">Add New Customer</a>
+                            <a class="btn btn-success btn-sm btn-new-user" href="{{ URL::route('student.create') }}">Add New Student</a>
 
 					</span>
                 </header>
@@ -21,7 +21,7 @@
                                 <th>Last Name</th>
                                 <th>Email</th>
                                 <th>Phone</th>
-                                <th>Gander</th>
+                                <th>Gender</th>
 
                                 <th class="text-center">Actions</th>
                             </tr>
@@ -32,6 +32,8 @@
                                     <td>{{ $student->first_name }}</td>
                                     <td>{{ $student->last_name }}</td>
                                     <td>{{ $student->email }}</td>
+                                    <td>{{ $student->phone }}</td>
+                                    <td>{{ $student->gender }}</td>
 
 
                                     <td class="text-center">
