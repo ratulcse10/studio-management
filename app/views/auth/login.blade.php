@@ -42,8 +42,8 @@
 <!-- END SIDEBAR TOGGLER BUTTON -->
 <!-- BEGIN LOGO -->
 <div class="logo">
-    <a href="index.html">
-        <img src="../../assets/admin/layout2/img/logo-big-white.png" style="height: 17px;" alt=""/>
+    <a href="{{route('dashboard')}}">
+        <img src={{asset('assets/images/logo-dark-bg.jpg')}} style="height:7.5em;" alt="Studio Management"/>
     </a>
 </div>
 <!-- END LOGO -->

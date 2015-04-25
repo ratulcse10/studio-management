@@ -13,7 +13,7 @@
 
 Route::get('/', function()
 {
-	return Redirect::route('login');
+	return Redirect::route('dashboard');
 });
 Route::group(['before' => 'guest'], function(){
 	Route::controller('password', 'RemindersController');
