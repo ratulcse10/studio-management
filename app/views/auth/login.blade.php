@@ -43,7 +43,7 @@
 <!-- BEGIN LOGO -->
 <div class="logo">
     <a href="{{route('dashboard')}}">
-        <img src={{asset('assets/images/logo-dark-bg.jpg')}} style="height:7.5em;" alt="Studio Management"/>
+        <img src={{asset('assets/images/latest.png')}} style="height:7.5em;" alt="Studio Management"/>
     </a>
 </div>
 <!-- END LOGO -->
