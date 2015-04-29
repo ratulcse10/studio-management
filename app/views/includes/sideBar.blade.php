@@ -11,47 +11,168 @@
         <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
         <ul class="page-sidebar-menu page-sidebar-menu-hover-submenu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
             <li class="active open">
-                <a href="#">
+                <a href="{{route('dashboard')}}">
                     <i class="icon-home"></i>
                     <span class="title">Dashboard</span>
                 </a>
             </li>
+
+
             <li>
-                <a href="{{route('student.index')}}">
+                <a href="javascript:;">
                     <i class="icon-user"></i>
                     <span class="title">Students</span>
+                    <span class="arrow "></span>
                 </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="{{route('student.create')}}">
+                            <i class="icon-badge"></i>
+                            Enroll a Student</a>
+                    </li>
+                    <li>
+                        <a href="{{route('student.index')}}">
+                            <i class="icon-folder"></i>
+                            Search a Student</a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="icon-settings"></i>
+                            Student Graphs</a>
+                    </li>
+
+                </ul>
             </li>
+
             <li>
-                <a href="#">
+                <a href="javascript:;">
                     <i class="icon-rocket"></i>
                     <span class="title">Classes</span>
+                    <span class="arrow "></span>
                 </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="#">
+                            <i class="icon-badge"></i>
+                            Add New Class</a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="icon-folder"></i>
+                            Search a Class</a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="icon-settings"></i>
+                            Class Graphs</a>
+                    </li>
+
+                </ul>
             </li>
+
             <li>
-                <a href="#">
+                <a href="javascript:;">
                     <i class="icon-diamond"></i>
                     <span class="title">Marketing</span>
+                    <span class="arrow "></span>
                 </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="#">
+                            <i class="icon-badge"></i>
+                            Add New Campaign</a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="icon-folder"></i>
+                            Search a Campaign</a>
+                    </li>
+
+                </ul>
             </li>
+
             <li>
-                <a href="#">
+                <a href="javascript:;">
                     <i class="icon-puzzle"></i>
                     <span class="title">Users</span>
+                    <span class="arrow "></span>
                 </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="#">
+                            <i class="icon-badge"></i>
+                            Add New User</a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="icon-folder"></i>
+                            Search Users</a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="icon-clock"></i>
+                            Timesheet</a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="icon-tag"></i>
+                            Tasks</a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="icon-calendar"></i>
+                            Calendar</a>
+                    </li>
+
+                </ul>
             </li>
+
             <li>
-                <a href="#">
+                <a href="javascript:;">
                     <i class="icon-paper-plane"></i>
                     <span class="title">Finances</span>
+                    <span class="arrow "></span>
                 </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="#">
+                            <i class="icon-badge"></i>
+                            Add Revenue</a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="icon-folder"></i>
+                            Search Revenue</a>
+                    </li>
+
+                </ul>
             </li>
+
             <li>
-                <a href="#">
+                <a href="javascript:;">
                     <i class="icon-settings"></i>
                     <span class="title">Advance Search</span>
+                    <span class="arrow "></span>
                 </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="#">
+                            <i class="icon-anchor"></i>
+                            Custom Search</a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="icon-folder"></i>
+                            Select a Saved Search</a>
+                    </li>
+
+                </ul>
             </li>
+
+
         </ul>
         <!-- END SIDEBAR MENU -->
     </div>
