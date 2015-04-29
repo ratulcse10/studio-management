@@ -4,7 +4,7 @@
         <!-- BEGIN LOGO -->
         <div class="page-logo">
             <a href="{{route('dashboard')}}">
-                <img src={{asset('assets/images/logo-dark-bg.jpg')}} alt="logo" class="logo-default"/>
+                <img src={{asset('assets/images/logo-dark-bg.jpgtest')}} alt="logo" class="logo-default"/>
             </a>
             <div class="menu-toggler sidebar-toggler">
                 <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
