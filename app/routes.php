@@ -37,11 +37,31 @@ Route::group(array('before' => 'auth'), function()
 	Route::post('change-password', array('as' => 'password.doChange', 'uses' => 'AuthController@doChangePassword'));
 
 	// Advertisement Type Cruds Related Routes Created By Joy
-		Route::get('advtypes',['as' => 'advtype.index', 'uses' => 'AdvertisementTypeController@index']);
-		Route::get('advtype/create',['as' => 'advtype.create', 'uses' => 'AdvertisementTypeController@create']);
-		Route::post('advtype/create',['as' => 'advtype.store', 'uses' => 'AdvertisementTypeController@store']);
-		Route::get('advtype/{id}/edit',['as' => 'advtype.edit', 'uses' => 'AdvertisementTypeController@edit']);
-		Route::put('advtype/{id}',['as' => 'advtype.update', 'uses' => 'AdvertisementTypeController@update']);
-		Route::delete('advtypes/{id}',['as' => 'advtype.delete', 'uses' => 'AdvertisementTypeController@destroy']);
-	// 
+	Route::get('advtypes',['as' => 'advtype.index', 'uses' => 'AdvertisementTypeController@index']);
+	Route::get('advtype/create',['as' => 'advtype.create', 'uses' => 'AdvertisementTypeController@create']);
+	Route::post('advtype/create',['as' => 'advtype.store', 'uses' => 'AdvertisementTypeController@store']);
+	Route::get('advtype/{id}/edit',['as' => 'advtype.edit', 'uses' => 'AdvertisementTypeController@edit']);
+	Route::put('advtype/{id}',['as' => 'advtype.update', 'uses' => 'AdvertisementTypeController@update']);
+	Route::delete('advtypes/{id}',['as' => 'advtype.delete', 'uses' => 'AdvertisementTypeController@destroy']);
+	//
+
+
+	Route::get('students',['as' => 'student.index', 'uses' => 'StudentController@index']);
+	Route::get('student/create',['as' => 'student.create', 'uses' => 'StudentController@create']);
+	Route::post('student/create',['as' => 'student.store', 'uses' => 'StudentController@store']);
+	Route::get('student/{id}/edit',['as' => 'student.edit', 'uses' => 'StudentController@edit']);
+	Route::put('student/{id}',['as' => 'student.update', 'uses' => 'StudentController@update']);
+	Route::delete('students/{id}',['as' => 'student.delete', 'uses' => 'StudentController@destroy']);
+});
+
+Route::get('test',function(){
+	$faker = Faker\Factory::create();
+	$time = $faker->unixTime;
+	$to= Carbon::createFromTimeStamp($time)->addDays($faker->numberBetween(1,1000));
+	$from = Carbon::createFromTimeStamp($time);
+	//var_dump($time);
+	return [
+		'from' => $from,
+		'to' => $to
+	];
 });
