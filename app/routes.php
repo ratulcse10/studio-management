@@ -36,5 +36,12 @@ Route::group(array('before' => 'auth'), function()
 	Route::get('change-password', array('as' => 'password.change', 'uses' => 'AuthController@changePassword'));
 	Route::post('change-password', array('as' => 'password.doChange', 'uses' => 'AuthController@doChangePassword'));
 
-
+	// Advertisement Type Cruds Related Routes Created By Joy
+		Route::get('advtypes',['as' => 'advtype.index', 'uses' => 'AdvertisementTypeController@index']);
+		Route::get('advtype/create',['as' => 'advtype.create', 'uses' => 'AdvertisementTypeController@create']);
+		Route::post('advtype/create',['as' => 'advtype.store', 'uses' => 'AdvertisementTypeController@store']);
+		Route::get('advtype/{id}/edit',['as' => 'advtype.edit', 'uses' => 'AdvertisementTypeController@edit']);
+		Route::put('advtype/{id}',['as' => 'advtype.update', 'uses' => 'AdvertisementTypeController@update']);
+		Route::delete('advtypes/{id}',['as' => 'advtype.delete', 'uses' => 'AdvertisementTypeController@destroy']);
+	// 
 });
