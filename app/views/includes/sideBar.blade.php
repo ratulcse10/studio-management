@@ -10,7 +10,7 @@
         <!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
         <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
         <ul class="page-sidebar-menu page-sidebar-menu-hover-submenu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
-            <li class="active open">
+            <li{{ (Request::is('dashboard') ? ' class="active open"' : '') }}>
                 <a href="{{route('dashboard')}}">
                     <i class="icon-home"></i>
                     <span class="title">Dashboard</span>
@@ -18,7 +18,7 @@
             </li>
 
 
-            <li>
+            <li {{ (Request::is('student*') ? ' class="active open"' : '') }}>
                 <a href="javascript:;">
                     <i class="icon-user"></i>
                     <span class="title">Students</span>
@@ -70,7 +70,7 @@
                 </ul>
             </li>
 
-            <li>
+            <li{{ (Request::is('campaign*') ? ' class="active open"' : '') }}>
                 <a href="javascript:;">
                     <i class="icon-diamond"></i>
                     <span class="title">Marketing</span>
@@ -78,7 +78,7 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a href="#">
+                        <a href="{{route('campaign.create')}}">
                             <i class="icon-badge"></i>
                             Add New Campaign</a>
                     </li>
