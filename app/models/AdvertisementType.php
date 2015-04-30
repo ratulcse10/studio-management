@@ -20,4 +20,11 @@ class AdvertisementType extends \Eloquent {
 					$merge);
 	}
 
+	public function campaign()
+	{
+		return $this->hasOne('Campaign','ad_type','id');
+	}
+
+
+
 }

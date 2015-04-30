@@ -46,22 +46,24 @@ Route::group(array('before' => 'auth'), function()
 	//
 
 
-	Route::get('students',['as' => 'student.index', 'uses' => 'StudentController@index']);
-	Route::get('student/create',['as' => 'student.create', 'uses' => 'StudentController@create']);
-	Route::post('student/create',['as' => 'student.store', 'uses' => 'StudentController@store']);
-	Route::get('student/{id}/edit',['as' => 'student.edit', 'uses' => 'StudentController@edit']);
-	Route::put('student/{id}',['as' => 'student.update', 'uses' => 'StudentController@update']);
-	Route::delete('students/{id}',['as' => 'student.delete', 'uses' => 'StudentController@destroy']);
+	Route::get('campaigns',['as' => 'campaign.index', 'uses' => 'CampaignsController@index']);
+	Route::get('campaign/create',['as' => 'campaign.create', 'uses' => 'CampaignsController@create']);
+	Route::post('campaign/create',['as' => 'campaign.store', 'uses' => 'CampaignsController@store']);
+	Route::get('campaign/{id}/edit',['as' => 'campaign.edit', 'uses' => 'CampaignsController@edit']);
+	Route::put('campaign/{id}',['as' => 'campaign.update', 'uses' => 'CampaignsController@update']);
+	Route::delete('campaigns/{id}',['as' => 'campaign.delete', 'uses' => 'CampaignsController@destroy']);
 });
 
 Route::get('test',function(){
-	$faker = Faker\Factory::create();
-	$time = $faker->unixTime;
-	$to= Carbon::createFromTimeStamp($time)->addDays($faker->numberBetween(1,1000));
-	$from = Carbon::createFromTimeStamp($time);
-	//var_dump($time);
-	return [
-		'from' => $from,
-		'to' => $to
-	];
+//	$faker = Faker\Factory::create();
+//	$time = $faker->unixTime;
+//	$to= Carbon::createFromTimeStamp($time)->addDays($faker->numberBetween(1,1000));
+//	$from = Carbon::createFromTimeStamp($time);
+//	//var_dump($time);
+//	return [
+//		'from' => $from,
+//		'to' => $to
+//	];
+
+	return Campaign::all();
 });

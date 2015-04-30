@@ -10,7 +10,9 @@ class CampaignsController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		return View::make('campaigns.index')
+					->with('campaigns',Campaign::all())
+					->with('title',"Campaign");
 	}
 
 	/**
@@ -21,7 +23,9 @@ class CampaignsController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		return View::make('campaigns.create')
+					->with('ad_types',AdvertisementType::lists('name','id'))
+					->with('title',"Create Campaign");
 	}
 
 	/**
@@ -32,7 +36,45 @@ class CampaignsController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		$rules = [
+					'name'         => 'required',
+					'from'         => 'required',
+					'to'           => 'required',
+					'ad_type'      => 'required',
+					'total_copies' => 'required|integer',
+					'cost'         => 'required|numeric'
+
+		];
+
+		$messages = array(
+					'name.required' => 'Campaign Name is Required.',
+					'from.required' => 'Launch Date Required.',
+					'to.required' => 'End Date Required.',
+					'total_copies.required' => 'Total copy is Required.',
+		);
+
+		$data = Input::all();
+
+		$validator = Validator::make($data,$rules,$messages);
+		if($validator->fails()){
+			return Redirect::back()->withInput()->withErrors($validator);
+		}
+
+		$campaign = new Campaign();
+
+		$campaign->name = $data['name'];
+		$campaign->from = $data['from'];
+		$campaign->to = $data['to'];
+		$campaign->ad_type = $data['ad_type'];
+		$campaign->total_copies = $data['total_copies'];
+		$campaign->cost = $data['cost'];
+
+
+		if($campaign->save()){
+			return Redirect::route('campaign.index')->with('success','Campaign Created Successfully.');
+		}else{
+			return Redirect::route('campaign.index')->with('error','Something went wrong.Try Again.');
+		}
 	}
 
 	/**
