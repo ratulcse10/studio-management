@@ -9,13 +9,13 @@ class AdvertisementTypeTableSeeder extends Seeder {
 	{
 		$users = [
 					[
-								'name'      => 'Name1'
+								'name'      => 'Newspaper'
 					],
 					[
-								'name'      => 'Name2'
+								'name'      => 'Television'
 					],
 					[
-								'name'      => 'Name3'
+								'name'      => 'Facebook'
 					]
 
 		];

@@ -34,15 +34,10 @@ class AdvertisementTypeController extends \BaseController {
 	 */
 	public function store()
 	{
-		//return Input::all();
-		$rules = [
-					
-					'name'      => 'required|unique:advertisement_types'
-		];
 
 		$data = Input::all();
 
-		$validator = Validator::make($data,$rules);
+		$validator = Validator::make($data,AdvertisementType::rules());
 		if($validator->fails()){
 			return Redirect::back()->withInput()->withErrors($validator);
 		}
@@ -99,15 +94,11 @@ class AdvertisementTypeController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		$rules = [
 
-					'name' => 'required|unique:advertisement_types'
-					
-		];
 
 		$data = Input::all();
 
-		$validator = Validator::make($data,$rules);
+		$validator = Validator::make($data,AdvertisementType::rules($id));
 
 		if($validator->fails()){
 			return Redirect::back()->withInput()->withErrors($validator);
