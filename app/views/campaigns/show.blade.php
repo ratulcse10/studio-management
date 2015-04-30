@@ -1,0 +1,1 @@
+F:\apps\xampp\htdocs\pro\studio-management\app/views/campaigns/show.blade.php
