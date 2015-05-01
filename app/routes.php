@@ -43,8 +43,15 @@ Route::group(array('before' => 'auth'), function()
 	Route::get('advtype/{id}/edit',['as' => 'advtype.edit', 'uses' => 'AdvertisementTypeController@edit']);
 	Route::put('advtype/{id}',['as' => 'advtype.update', 'uses' => 'AdvertisementTypeController@update']);
 	Route::delete('advtypes/{id}',['as' => 'advtype.delete', 'uses' => 'AdvertisementTypeController@destroy']);
-	//
-
+	// 
+	// Stduio Class  Cruds Related Routes Created By Joy
+	Route::get('studioclasses',['as' => 'studioclass.index', 'uses' => 'StudioClassController@index']);
+	Route::get('studioclass/create',['as' => 'studioclass.create', 'uses' => 'StudioClassController@create']);
+	Route::post('studioclass/create',['as' => 'studioclass.store', 'uses' => 'StudioClassController@store']);
+	Route::get('studioclass/{id}/edit',['as' => 'studioclass.edit', 'uses' => 'StudioClassController@edit']);
+	Route::put('studioclass/{id}',['as' => 'studioclass.update', 'uses' => 'StudioClassController@update']);
+	Route::delete('studioclasses/{id}',['as' => 'studioclass.delete', 'uses' => 'StudioClassController@destroy']);
+	// 
 
 	Route::get('campaigns',['as' => 'campaign.index', 'uses' => 'CampaignsController@index']);
 	Route::get('campaign/create',['as' => 'campaign.create', 'uses' => 'CampaignsController@create']);

@@ -7,7 +7,7 @@ class AdvertisementTypeTableSeeder extends Seeder {
 
 	public function run()
 	{
-		$users = [
+		$types = [
 					[
 								'name'      => 'Newspaper'
 					],
@@ -20,7 +20,7 @@ class AdvertisementTypeTableSeeder extends Seeder {
 
 		];
 
-		DB::table('advertisement_types')->insert($users);
+		DB::table('advertisement_types')->insert($types);
 	}
 
 }

@@ -52,12 +52,12 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a href="#">
+                        <a href="{{route('studioclass.create')}}">
                             <i class="icon-badge"></i>
                             Add New Class</a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{{route('studioclass.index')}}">
                             <i class="icon-folder"></i>
                             Search a Class</a>
                     </li>
