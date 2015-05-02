@@ -52,7 +52,14 @@ Route::group(array('before' => 'auth'), function()
 	Route::put('studioclass/{id}',['as' => 'studioclass.update', 'uses' => 'StudioClassController@update']);
 	Route::delete('studioclasses/{id}',['as' => 'studioclass.delete', 'uses' => 'StudioClassController@destroy']);
 	// 
-
+	// Revenues Cruds
+	Route::get('revenues',['as' => 'revenue.index', 'uses' => 'RevenueController@index']);
+	Route::get('revenue/create',['as' => 'revenue.create', 'uses' => 'RevenueController@create']);
+	Route::post('revenue/create',['as' => 'revenue.store', 'uses' => 'RevenueController@store']);
+	Route::get('revenue/{id}/edit',['as' => 'revenue.edit', 'uses' => 'RevenueController@edit']);
+	Route::put('revenue/{id}',['as' => 'revenue.update', 'uses' => 'RevenueController@update']);
+	Route::delete('revenue/{id}',['as' => 'revenue.delete', 'uses' => 'RevenueController@destroy']);
+	// 
 	Route::get('campaigns',['as' => 'campaign.index', 'uses' => 'CampaignsController@index']);
 	Route::get('campaign/create',['as' => 'campaign.create', 'uses' => 'CampaignsController@create']);
 	Route::post('campaign/create',['as' => 'campaign.store', 'uses' => 'CampaignsController@store']);
