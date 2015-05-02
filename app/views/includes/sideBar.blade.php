@@ -91,7 +91,7 @@
                 </ul>
             </li>
 
-            <li>
+            <li{{ (Request::is('subscriber*') ? ' class="active open"' : '') }}>
                 <a href="javascript:;">
                     <i class="icon-puzzle"></i>
                     <span class="title">Users</span>
@@ -104,7 +104,7 @@
                             Add New User</a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{{route('subscriber.index')}}">
                             <i class="icon-folder"></i>
                             Search Users</a>
                     </li>
