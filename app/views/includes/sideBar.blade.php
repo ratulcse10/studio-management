@@ -99,7 +99,7 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a href="#">
+                        <a href="{{route('subscriber.create')}}">
                             <i class="icon-badge"></i>
                             Add New User</a>
                     </li>
