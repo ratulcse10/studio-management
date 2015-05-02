@@ -20,7 +20,8 @@ class DatabaseSeeder extends Seeder {
 		$this->call('AdvertisementTypeTableSeeder');
 		$this->call('CampaignsTableSeeder');
 		$this->call('StudioClassTableSeeder');
-		$this->call('StudioClassTableSeeder');
+		$this->call('RevenuesTableSeeder');
+
 	}
 
 }

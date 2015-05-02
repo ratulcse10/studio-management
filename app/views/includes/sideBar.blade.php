@@ -138,12 +138,12 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a href="#">
+                        <a href="{{route('revenue.create')}}">
                             <i class="icon-badge"></i>
                             Add Revenue</a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{{route('revenue.index')}}">
                             <i class="icon-folder"></i>
                             Search Revenue</a>
                     </li>
