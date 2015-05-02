@@ -10,7 +10,9 @@ class SubscribersController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		return View::make('subscribers.index')
+					->with('subscribers',Subscriber::all())
+					->with('title',"Subscribers");
 	}
 
 	/**
