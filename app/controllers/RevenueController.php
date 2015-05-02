@@ -41,6 +41,8 @@ class RevenueController extends \BaseController {
         ];
         $current_year = (int)date('Y');
         $year = '';
+
+        // Recent 5 years Generator
         for ($i=0; $i < 5; $i++) { 
        		 $year[$current_year] = $current_year;
        		 $current_year--;
@@ -111,7 +113,8 @@ class RevenueController extends \BaseController {
 	public function edit($id)
 	{
 		try{
-			$revenue = Revenue::findOrFail($id);
+			$user = Auth::user();
+			$revenue = Revenue::whereUserId($user->id)->findOrFail($id);
 			$month = [
 			'January'      => 'January',
             'February' => 'February',
@@ -126,12 +129,17 @@ class RevenueController extends \BaseController {
             'November'   => 'November',
             'December'   => 'December'
 	        ];
+
+
 	        $current_year = (int)date('Y');
 	        $year = '';
 	        for ($i=0; $i < 5; $i++) { 
 	       		 $year[$current_year] = $current_year;
 	       		 $current_year--;
 	        }
+	        
+
+
 	        // return json_encode($revenue);
 			return View::make('revenues.edit')
 						->with('revenue',$revenue)->with('month',$month)->with('year',$year)
