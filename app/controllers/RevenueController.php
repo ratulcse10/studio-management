@@ -172,8 +172,8 @@ class RevenueController extends \BaseController {
 		if($validator->fails()){
 			return Redirect::back()->withInput()->withErrors($validator);
 		}
-
-		$revenue = Revenue::find($id);
+		$user = Auth::user();
+		$revenue = Revenue::whereUserId($user->id)->find($id);
 
 		$revenue->revenue = $data['revenue'];
 		$revenue->month = $data['month'];
