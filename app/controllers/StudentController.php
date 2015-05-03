@@ -69,6 +69,7 @@ class StudentController extends \BaseController {
 		$student->phone = $data['phone'];
 		$student->dob = $data['dob'];
 		$student->gender = $data['gender'];
+		$student->created_by = Auth::user()->id;
 
 		if($student->save()){
 			return Redirect::route('student.index')->with('success','Student Created Successfully.');

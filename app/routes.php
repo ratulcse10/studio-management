@@ -86,5 +86,5 @@ Route::get('test',function(){
 //		'to' => $to
 //	];
 
-	return Subscriber::all();
+	return Student::all();
 });
