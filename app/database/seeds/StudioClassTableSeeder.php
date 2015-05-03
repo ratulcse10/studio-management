@@ -13,6 +13,7 @@ class StudioClassTableSeeder extends Seeder {
 								'start_time' => '08:00:00',
 								'room' => 'A',
 								'day' => 'Thursday',
+								'created_by' => 1,
 								'instructor' => 'Mitcell D Marco',
 								'status' => 'Open'
 					],
@@ -21,6 +22,7 @@ class StudioClassTableSeeder extends Seeder {
 								'start_time' => '10:00:00',
 								'room' => 'A',
 								'day' => 'Tuesday',
+								'created_by' => 1,
 								'instructor' => 'Mitcell D Marco',
 								'status' => 'Closed'
 					],
@@ -29,6 +31,7 @@ class StudioClassTableSeeder extends Seeder {
 								'start_time' => '07:00:00',
 								'room' => 'C',
 								'day' => 'Monday',
+								'created_by' => 1,
 								'instructor' => 'Mitcell D Marco',
 								'status' => 'Pending'
 					]
