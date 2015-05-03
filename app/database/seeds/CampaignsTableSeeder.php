@@ -22,7 +22,8 @@ class CampaignsTableSeeder extends Seeder {
 				'to'    => $to,
 				'ad_type' => $faker->numberBetween(1,3),
 				'total_copies' => $copy,
-				'cost'  => $copy*$ad_type
+				'cost'  => $copy*$ad_type,
+				'created_by' => 1
 			]);
 		}
 	}
