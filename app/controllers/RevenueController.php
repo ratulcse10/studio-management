@@ -9,9 +9,7 @@ class RevenueController extends \BaseController {
 	 */
 	public function index()
 	{
-		$user = Auth::user();
-		$revenues = Revenue::whereUserId($user->id)->get();
-
+		$revenues = Revenue::all();
 		return View::make('revenues.index')
 					->with('revenues',$revenues)
 					->with('title',"Revenues");
@@ -82,7 +80,7 @@ class RevenueController extends \BaseController {
 		$revenue->revenue = $data['revenue'];
 		$revenue->month = $data['month'];
 		$revenue->year = $data['year'];
-		$revenue->user_id = $user->id;
+		$revenue->created_by = $user->id;
 		if($revenue->save()){
 
 			return Redirect::route('revenue.index')->with('success','Revenue Created Successfully.');
@@ -113,8 +111,8 @@ class RevenueController extends \BaseController {
 	public function edit($id)
 	{
 		try{
-			$user = Auth::user();
-			$revenue = Revenue::whereUserId($user->id)->findOrFail($id);
+
+			$revenue = Revenue::findOrFail($id);
 			$month = [
 			'January'      => 'January',
             'February' => 'February',
@@ -172,8 +170,7 @@ class RevenueController extends \BaseController {
 		if($validator->fails()){
 			return Redirect::back()->withInput()->withErrors($validator);
 		}
-		$user = Auth::user();
-		$revenue = Revenue::whereUserId($user->id)->find($id);
+		$revenue = Revenue::find($id);
 
 		$revenue->revenue = $data['revenue'];
 		$revenue->month = $data['month'];

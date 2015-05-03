@@ -17,6 +17,7 @@
                         <table class="display table table-bordered table-striped" id="example">
                             <thead>
                             <tr>
+                                <th>Created BY</th>
                                 <th>Revenue</th>
                                 <th>Month</th>
                                 <th>Year</th>
@@ -26,6 +27,7 @@
                             <tbody>
                             @foreach($revenues as $revenue)
                                 <tr>
+                                    <td>{{ $revenue->user->email }}</td>
                                     <td>{{ $revenue->revenue }}$</td>
                                     <td>{{ $revenue->month }}</td>
                                     <td>{{ $revenue->year }}</td>
