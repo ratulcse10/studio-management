@@ -60,7 +60,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-lg-offset-2 col-lg-10">
-                            {{ Form::submit('Create Student', array('class' => 'btn btn-primary')) }}
+                            {{ Form::submit('Create Class', array('class' => 'btn btn-primary')) }}
                         </div>
                     </div>
                     {{ Form::close() }}
@@ -72,22 +72,18 @@
 
 @section('style')
     {{ HTML::style('assets/global/plugins/select2/select2.css') }}
-    {{ HTML::style('assets/global/plugins/bootstrap-datepicker/css/datepicker.css') }}
 @stop
 
 @section('script')
 
 
-    {{ HTML::script('assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js') }}
     {{ HTML::script('assets/global/plugins/select2/select2.min.js') }}
 
     <script type="text/javascript">
         $(document).ready(function() {
 
-            $("#dob").datepicker({
-                format: 'yyyy-mm-dd'
-            });
-            $("#gender").select2();
+            $("#day").select2();
+            $("#status").select2();
 
 
         });

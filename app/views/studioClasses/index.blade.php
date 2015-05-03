@@ -23,6 +23,7 @@
                                 <th>Day</th>
                                 <th>Instructor</th>
                                 <th>Status</th>
+                                <th>Created_by</th>
                                 <th class="text-center">Actions</th>
                             </tr>
                             </thead>
@@ -35,6 +36,7 @@
                                     <td>{{ $class->day }}</td>
                                     <td>{{ $class->instructor }}</td>
                                      <td>{{ $class->status }}</td>
+                                     <td>{{ $class->user->email }}</td>
 
                                     <td class="text-center">
                                         <a class="btn btn-xs btn-success btn-edit" href="{{ URL::route('studioclass.edit', array('id' => $class->id)) }}">Edit</a>
