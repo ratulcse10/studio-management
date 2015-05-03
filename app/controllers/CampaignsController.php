@@ -68,6 +68,7 @@ class CampaignsController extends \BaseController {
 		$campaign->ad_type = $data['ad_type'];
 		$campaign->total_copies = $data['total_copies'];
 		$campaign->cost = $data['cost'];
+		$campaign->created_by = Auth::user()->id;
 
 
 		if($campaign->save()){

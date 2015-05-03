@@ -3,7 +3,7 @@
 class Campaign extends \Eloquent {
 	protected $guarded = ['id'];
 	protected $table = 'campaigns';
-	protected $with = ['ad'];
+	protected $with = ['ad','user'];
 
 	public function getDates(){
 		return ['created_at','updated_at','deleted_at','from','to'];
@@ -15,6 +15,10 @@ class Campaign extends \Eloquent {
 	{
 		return $this->belongsTo('AdvertisementType', 'ad_type', 'id');
 
+	}
+
+	public function user(){
+		return $this->belongsTo('User','created_by','id');
 	}
 
 
