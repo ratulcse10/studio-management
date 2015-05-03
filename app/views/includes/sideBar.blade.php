@@ -83,7 +83,7 @@
                             Add New Campaign</a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{{route('campaign.index')}}">
                             <i class="icon-folder"></i>
                             Search a Campaign</a>
                     </li>

@@ -23,6 +23,7 @@
                                 <th>Type</th>
                                 <th>Total Copy</th>
                                 <th>Cost</th>
+                                <th>Created By</th>
 
                                 <th class="text-center">Actions</th>
                             </tr>
@@ -36,6 +37,7 @@
                                     <td>{{ $campaign->ad->name }}</td>
                                     <td>{{ $campaign->total_copies }}</td>
                                     <td>{{ $campaign->cost }}</td>
+                                    <td>{{ $campaign->user->email }}</td>
 
 
                                     <td class="text-center">
