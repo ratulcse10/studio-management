@@ -15,14 +15,14 @@ class CreateRevenuesTable extends Migration {
 		Schema::create('revenues', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('user_id')->unsigned();
+			$table->integer('created_by')->unsigned();
 			$table->double('revenue', 15,2);
 			$table->string('month');
 			$table->string('year');
 			$table->timestamps();
 		});
 		Schema::table('revenues', function($table) {
-	       $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+	       $table->foreign('created_by')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
 	   });
 	}
 

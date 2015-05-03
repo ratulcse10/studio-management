@@ -9,22 +9,22 @@ class RevenuesTableSeeder extends Seeder {
 	{
 		$revenues = [
 					[
-								'user_id'      => '1',
+								'created_by'      => 1,
 								'revenue'   => '23423.80',
 								'month' => 'January',
 								'year' => '2015'			
 					],
 					[
-								'user_id'      => '1',
+								'created_by'      => 1,
 								'revenue'   => '2323.80',
 								'month' => 'February',
-								'year' => '2015'			
+								'year' => '2015'
 					],
 					[
-								'user_id'      => '1',
+								'created_by'      => 1,
 								'revenue'   => '23423.80',
 								'month' => 'March',
-								'year' => '2015'			
+								'year' => '2015'
 					]
 
 		];
