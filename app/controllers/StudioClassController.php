@@ -85,7 +85,8 @@ class StudioClassController extends \BaseController {
 		$studioclass->day = $data['day'];
 		$studioclass->instructor = $data['instructor'];
 		$studioclass->status = $data['status'];
-		
+		$studioclass->created_by = Auth::user()->id;
+
 		if($studioclass->save()){
 			return Redirect::route('studioclass.index')->with('success','Class Created Successfully.');
 		}else{

@@ -6,18 +6,12 @@ use Illuminate\Auth\Reminders\RemindableTrait;
 use Illuminate\Auth\Reminders\RemindableInterface;
 use Zizaco\Entrust\HasRole;
 
-class StudioClass extends Eloquent implements UserInterface, RemindableInterface {
+class StudioClass extends \Eloquent {
 
-	use UserTrait, RemindableTrait, HasRole;
-
-	/**
-	 * The database table used by the model.
-	 *
-	 * @var string
-	 */
 	protected $table = 'studio_class';
 
 	protected $guarded = ['id'];
+	protected $with = ['user'];
 	public static function rules($id = 0, $merge = [])
 	{
 		return array_merge(
@@ -26,11 +20,9 @@ class StudioClass extends Eloquent implements UserInterface, RemindableInterface
 					],
 					$merge);
 	}
-	/**
-	 * The attributes excluded from the model's JSON form.
-	 *
-	 * @var array
-	 */
-	protected $hidden = array('password', 'remember_token');
+
+	public function user(){
+		return $this->belongsTo('User','created_by','id');
+	}
 
 }
