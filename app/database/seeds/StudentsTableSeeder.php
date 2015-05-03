@@ -15,6 +15,7 @@ class StudentsTableSeeder extends Seeder {
 				'first_name' => $faker->firstName,
 				'last_name' => $faker->lastName,
 				'email' => $faker->unique()->email,
+				'created_by' => 1,
 				'address' => $faker->address,
 				'city' => $faker->city,
 				'zipcode' => $faker->countryCode,
