@@ -44,7 +44,7 @@
                 </ul>
             </li>
 
-            <li>
+            <li{{ (Request::is('studioclass*') ? ' class="active open"' : '') }}>
                 <a href="javascript:;">
                     <i class="icon-rocket"></i>
                     <span class="title">Classes</span>
@@ -130,7 +130,7 @@
                 </ul>
             </li>
 
-            <li>
+            <li{{ (Request::is('revenue*') ? ' class="active open"' : '') }}>
                 <a href="javascript:;">
                     <i class="icon-paper-plane"></i>
                     <span class="title">Finances</span>
