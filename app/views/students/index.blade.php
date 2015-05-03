@@ -22,6 +22,7 @@
                                 <th>Email</th>
                                 <th>Phone</th>
                                 <th>Gender</th>
+                                <th>Created_by</th>
 
                                 <th class="text-center">Actions</th>
                             </tr>
@@ -34,6 +35,7 @@
                                     <td>{{ $student->email }}</td>
                                     <td>{{ $student->phone }}</td>
                                     <td>{{ $student->gender }}</td>
+                                    <td>{{ $student->user->email }}</td>
 
 
                                     <td class="text-center">
