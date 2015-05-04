@@ -85,7 +85,7 @@
                     <li>
                         <a href="{{route('campaign.index')}}">
                             <i class="icon-folder"></i>
-                            Search a Campaign</a>
+                            Search Campaign</a>
                     </li>
 
                 </ul>
