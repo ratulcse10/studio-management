@@ -12,60 +12,65 @@
 
 					</span>
                 </header>
+                <br>
                 <div class="panel-body">
                     {{ Form::open(array('route' => 'campaign.create', 'class' => 'form-horizontal')) }}
 
 
-
-
-                    <div class="form-group">
-                        {{ Form::label('name', 'Campaign Name*', array('class' => 'col-md-2 control-label')) }}
-                        <div class="col-md-4">
-                            {{ Form::text('name', null, array('class' => 'form-control', 'placeholder' => 'Campaign Name')) }}
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ Form::label('name', 'Campaign Name*', array('class' => 'col-md-4 control-label')) }}
+                            <div class="col-md-8">
+                                {{ Form::text('name', null, array('class' => 'form-control', 'placeholder' => 'Campaign Name')) }}
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        {{ Form::label('from', 'Launch Date*', array('class' => 'col-md-2 control-label')) }}
-                        <div class="col-md-4">
-                            {{ Form::text('from', null, array('class' => 'form-control', 'placeholder' => 'Launch Date','id'=>'from')) }}
+                        <div class="form-group">
+                            {{ Form::label('from', 'Launch Date*', array('class' => 'col-md-4 control-label')) }}
+                            <div class="col-md-8">
+                                {{ Form::text('from', null, array('class' => 'form-control', 'placeholder' => 'Launch Date','id'=>'from')) }}
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        {{ Form::label('to', 'End Date*', array('class' => 'col-md-2 control-label')) }}
-                        <div class="col-md-4">
-                            {{ Form::text('to', null, array('class' => 'form-control', 'placeholder' => 'End Date','id'=>'to')) }}
+                        <div class="form-group">
+                            {{ Form::label('ad_type', 'Type of Ad*', array('class' => 'col-md-4 control-label required')) }}
+                            <div class="col-md-8">
+                                {{ Form::select('ad_type', $ad_types, null, array('class' => 'form-control', 'id' => 'ad_type')) }}
+                            </div>
                         </div>
-                    </div>
 
-
-
-                    <div class="form-group">
-                        {{ Form::label('ad_type', 'Type of Ad*', array('class' => 'col-md-2 control-label required')) }}
-                        <div class="col-md-4">
-                            {{ Form::select('ad_type', $ad_types, null, array('class' => 'form-control', 'id' => 'ad_type')) }}
-                        </div>
                     </div>
 
 
-                    <div class="form-group">
-                        {{ Form::label('total_copies', 'Total copies*', array('class' => 'col-md-2 control-label')) }}
-                        <div class="col-md-4">
-                            {{ Form::number('total_copies', null, array('class' => 'form-control', 'placeholder' => 'Total copies')) }}
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ Form::label('total_copies', 'Total copies*', array('class' => 'col-md-4 control-label')) }}
+                            <div class="col-md-8">
+                                {{ Form::number('total_copies', null, array('class' => 'form-control', 'placeholder' => 'Total copies')) }}
+                            </div>
                         </div>
+
+                        <div class="form-group">
+                            {{ Form::label('to', 'End Date*', array('class' => 'col-md-4 control-label')) }}
+                            <div class="col-md-8">
+                                {{ Form::text('to', null, array('class' => 'form-control', 'placeholder' => 'End Date','id'=>'to')) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            {{ Form::label('cost', 'Cost of Ad*', array('class' => 'col-md-4 control-label')) }}
+                            <div class="col-md-8">
+                                {{ Form::number('cost', null, array('class' => 'form-control', 'placeholder' => 'Cost of Ad','step'=>"0.01")) }}
+                            </div>
+                        </div>
+
                     </div>
 
-                    <div class="form-group">
-                        {{ Form::label('cost', 'Cost of Ad*', array('class' => 'col-md-2 control-label')) }}
-                        <div class="col-md-4">
-                            {{ Form::number('cost', null, array('class' => 'form-control', 'placeholder' => 'Cost of Ad','step'=>"0.01")) }}
-                        </div>
-                    </div>
-
 
                     <div class="form-group">
-                        <div class="col-lg-offset-2 col-lg-10">
+                        <div class="col-lg-offset-5 col-lg-6">
+                            <br><br>
                             {{ Form::submit('Create Campaign', array('class' => 'btn btn-primary')) }}
                         </div>
                     </div>

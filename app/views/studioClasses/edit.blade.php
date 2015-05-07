@@ -15,59 +15,65 @@
 
 					</span>
                 </header>
+                <br>
                 <div class="panel-body">
                     {{Form::model($class,['route' => ['studioclass.update',$class->id], 'class' => 'form-horizontal', 'method' => 'put' ])}}
 
 
-                    <div class="form-group">
-                        {{ Form::label('name', 'Name*', array('class' => 'col-md-2 control-label')) }}
-                        <div class="col-md-4">
-                            {{ Form::text('name', null, array('class' => 'form-control', 'placeholder' => 'Name')) }}
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ Form::label('name', 'Name*', array('class' => 'col-md-4 control-label')) }}
+                            <div class="col-md-8">
+                                {{ Form::text('name', null, array('class' => 'form-control', 'placeholder' => 'Name')) }}
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        {{ Form::label('start_time', 'Start Time*', array('class' => 'col-md-2 control-label')) }}
-                        <div class="col-md-4">
-                            {{ Form::input('time','start_time', null, array('class' => 'form-control', 'placeholder' => 'Start Time')) }}
+                        <div class="form-group">
+                            {{ Form::label('day', 'Day*', array('class' => 'col-md-4 control-label')) }}
+                            <div class="col-md-8">
+                                {{ Form::select('day',$day, null, array('class' => 'form-control', 'placeholder' => 'Day')) }}
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        {{ Form::label('room', 'Room*', array('class' => 'col-md-2 control-label')) }}
-                        <div class="col-md-4">
-                            {{ Form::text('room', null, array('class' => 'form-control', 'placeholder' => 'Room')) }}
+                        <div class="form-group">
+                            {{ Form::label('room', 'Room*', array('class' => 'col-md-4 control-label')) }}
+                            <div class="col-md-8">
+                                {{ Form::text('room', null, array('class' => 'form-control', 'placeholder' => 'Room')) }}
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        {{ Form::label('day', 'Day*', array('class' => 'col-md-2 control-label')) }}
-                        <div class="col-md-4">
-                            {{ Form::select('day',$day, null, array('class' => 'form-control', 'placeholder' => 'Day')) }}
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        {{ Form::label('instructor', 'Instructor*', array('class' => 'col-md-2 control-label')) }}
-                        <div class="col-md-4">
-                            {{ Form::text('instructor', null, array('class' => 'form-control', 'placeholder' => 'Instructor')) }}
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        {{ Form::label('status', 'Status*', array('class' => 'col-md-2 control-label')) }}
-                        <div class="col-md-4">
-                            {{ Form::select('status', $status, null, array('class' => 'form-control', 'placeholder' => 'Status')) }}
-                        </div>
                     </div>
 
 
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ Form::label('instructor', 'Instructor*', array('class' => 'col-md-4 control-label')) }}
+                            <div class="col-md-8">
+                                {{ Form::text('instructor', null, array('class' => 'form-control', 'placeholder' => 'Instructor')) }}
+                            </div>
+                        </div>
 
+                        <div class="form-group">
+                            {{ Form::label('start_time', 'Start Time*', array('class' => 'col-md-4 control-label')) }}
+                            <div class="col-md-8">
+                                {{ Form::input('time','start_time', null, array('class' => 'form-control', 'placeholder' => 'Start Time')) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            {{ Form::label('status', 'Status*', array('class' => 'col-md-4 control-label')) }}
+                            <div class="col-md-8">
+                                {{ Form::select('status', $status, null, array('class' => 'form-control', 'placeholder' => 'Status')) }}
+                            </div>
+                        </div>
+
+                    </div>
 
 
 
                     <div class="form-group">
-                        <div class="col-lg-offset-2 col-lg-10">
+                        <div class="col-lg-offset-5 col-lg-6">
+                            <br><br>
                             {{ Form::submit('Edit Class', array('class' => 'btn btn-primary')) }}
                         </div>
                     </div>

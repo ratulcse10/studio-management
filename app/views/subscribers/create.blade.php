@@ -12,66 +12,71 @@
 
 					</span>
                 </header>
+                <br>
                 <div class="panel-body">
                     {{ Form::open(array('route' => 'subscriber.create', 'class' => 'form-horizontal')) }}
 
 
-
-
-                    <div class="form-group">
-                        {{ Form::label('first_name', 'First Name*', array('class' => 'col-md-2 control-label')) }}
-                        <div class="col-md-4">
-                            {{ Form::text('first_name', null, array('class' => 'form-control', 'placeholder' => 'First Name')) }}
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ Form::label('first_name', 'First Name*', array('class' => 'col-md-4 control-label')) }}
+                            <div class="col-md-8">
+                                {{ Form::text('first_name', null, array('class' => 'form-control', 'placeholder' => 'First Name')) }}
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        {{ Form::label('last_name', 'Last Name*', array('class' => 'col-md-2 control-label')) }}
-                        <div class="col-md-4">
-                            {{ Form::text('last_name', null, array('class' => 'form-control', 'placeholder' => 'Last Name')) }}
+                        <div class="form-group">
+                            {{ Form::label('email', 'User Email*', array('class' => 'col-md-4 control-label')) }}
+                            <div class="col-md-8">
+                                {{ Form::email('email', null, array('class' => 'form-control', 'placeholder' => 'User Email')) }}
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        {{ Form::label('email', 'User Email*', array('class' => 'col-md-2 control-label')) }}
-                        <div class="col-md-4">
-                            {{ Form::email('email', null, array('class' => 'form-control', 'placeholder' => 'User Email')) }}
+                        <div class="form-group">
+                            {{ Form::label('address', 'Address*', array('class' => 'col-md-4 control-label')) }}
+                            <div class="col-md-8">
+                                {{ Form::text('address', null, array('class' => 'form-control', 'placeholder' => 'Address')) }}
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        {{ Form::label('password', 'Password*', array('class' => 'col-md-2 control-label')) }}
-                        <div class="col-md-4">
-                            {{ Form::text('password', '', array('class' => 'form-control', 'placeholder' => 'Password')) }}
+                        <div class="form-group">
+                            {{ Form::label('gender', 'Gender', array('class' => 'col-md-4 control-label required')) }}
+                            <div class="col-md-8">
+                                {{ Form::select('gender', $gender, null, array('class' => 'form-control', 'id' => 'gender')) }}
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        {{ Form::label('address', 'Address*', array('class' => 'col-md-2 control-label')) }}
-                        <div class="col-md-4">
-                            {{ Form::text('address', null, array('class' => 'form-control', 'placeholder' => 'Address')) }}
-                        </div>
                     </div>
 
 
-
-                    <div class="form-group">
-                        {{ Form::label('phone', 'Phone*', array('class' => 'col-md-2 control-label')) }}
-                        <div class="col-md-4">
-                            {{ Form::text('phone', null, array('class' => 'form-control', 'placeholder' => 'Phone')) }}
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ Form::label('last_name', 'Last Name*', array('class' => 'col-md-4 control-label')) }}
+                            <div class="col-md-8">
+                                {{ Form::text('last_name', null, array('class' => 'form-control', 'placeholder' => 'Last Name')) }}
+                            </div>
                         </div>
+
+                        <div class="form-group">
+                            {{ Form::label('password', 'Password*', array('class' => 'col-md-4 control-label')) }}
+                            <div class="col-md-8">
+                                {{ Form::text('password', '', array('class' => 'form-control', 'placeholder' => 'Password')) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            {{ Form::label('phone', 'Phone*', array('class' => 'col-md-4 control-label')) }}
+                            <div class="col-md-8">
+                                {{ Form::text('phone', null, array('class' => 'form-control', 'placeholder' => 'Phone')) }}
+                            </div>
+                        </div>
+
                     </div>
 
-                    <div class="form-group">
-                        {{ Form::label('gender', 'Gender', array('class' => 'col-md-2 control-label required')) }}
-                        <div class="col-md-4">
-                            {{ Form::select('gender', $gender, null, array('class' => 'form-control', 'id' => 'gender')) }}
-                        </div>
-                    </div>
-
 
                     <div class="form-group">
-                        <div class="col-lg-offset-2 col-lg-10">
+                        <div class="col-lg-offset-5 col-lg-6">
+                            <br><br>
                             {{ Form::submit('Create User', array('class' => 'btn btn-primary')) }}
                         </div>
                     </div>
