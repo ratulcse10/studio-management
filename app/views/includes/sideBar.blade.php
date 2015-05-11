@@ -185,7 +185,9 @@
                             Add Role</a>
                     </li>
                     <li>
+                        <a href="{{route('role.index')}}">
                             <i class="icon-folder"></i>
+                            Search Role</a>
                     </li>
 
                 </ul>
