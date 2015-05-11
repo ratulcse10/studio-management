@@ -21,7 +21,7 @@
 					</span>
                 </header>
                 <div class="panel-body">
-                    {{ Form::open(array('route' => 'revenue.create', 'class' => 'form-horizontal')) }}
+                    {{ Form::open(array('route' => 'revenue.store', 'class' => 'form-horizontal')) }}
 
 
 

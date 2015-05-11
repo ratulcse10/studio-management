@@ -73,6 +73,13 @@ Route::group(array('before' => 'auth'), function()
 	Route::get('subscriber/{id}/edit',['as' => 'subscriber.edit', 'uses' => 'SubscribersController@edit']);
 	Route::put('subscriber/{id}',['as' => 'subscriber.update', 'uses' => 'SubscribersController@update']);
 	Route::delete('subscribers/{id}',['as' => 'subscriber.delete', 'uses' => 'SubscribersController@destroy']);
+
+	Route::get('roles',['as' => 'role.index', 'uses' => 'RoleController@index']);
+	Route::get('role/create',['as' => 'role.create', 'uses' => 'RoleController@create']);
+	Route::post('role/create',['as' => 'role.store', 'uses' => 'RoleController@store']);
+	Route::get('role/{id}/edit',['as' => 'role.edit', 'uses' => 'RoleController@edit']);
+	Route::put('role/{id}',['as' => 'role.update', 'uses' => 'RoleController@update']);
+	Route::delete('roles/{id}',['as' => 'role.delete', 'uses' => 'RoleController@destroy']);
 });
 
 Route::get('test',function(){
