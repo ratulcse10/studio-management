@@ -172,6 +172,25 @@
                 </ul>
             </li>
 
+            <li{{ (Request::is('role*') ? ' class="active open"' : '') }}>
+                <a href="javascript:;">
+                    <i class="icon-magnet"></i>
+                    <span class="title">Role Management</span>
+                    <span class="arrow "></span>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="{{route('role.create')}}">
+                            <i class="icon-badge"></i>
+                            Add Role</a>
+                    </li>
+                    <li>
+                            <i class="icon-folder"></i>
+                    </li>
+
+                </ul>
+            </li>
+
 
         </ul>
         <!-- END SIDEBAR MENU -->
