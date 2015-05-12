@@ -81,7 +81,14 @@ class PermissionsController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		try{
+			$permission = Permission::findOrFail($id);
+			return View::make('permissions.edit')
+						->with('permission',$permission)
+						->with('title','Edit Permission');
+		}catch(Exception $ex){
+			return Redirect::route('permission.index')->with('error','Something went wrong.Try Again.');
+		}
 	}
 
 	/**
@@ -93,7 +100,25 @@ class PermissionsController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$data = Input::all();
+
+		$validator = Validator::make($data,Permission::rules($id));
+
+		if($validator->fails()){
+			return Redirect::back()->withInput()->withErrors($validator);
+		}
+
+		$permission = Permission::find($id);
+
+		$permission->name = $data['name'];
+		$permission->display_name = $data['display_name'];
+
+		if($permission->save()){
+
+			return Redirect::route('permission.index')->with('success','Permission Updated Successfully.');
+		}else{
+			return Redirect::route('permission.index')->with('error','Something went wrong.Try Again.');
+		}
 	}
 
 	/**

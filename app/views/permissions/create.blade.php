@@ -16,7 +16,7 @@
                     {{ Form::open(array('route' => 'permission.store', 'class' => 'form-horizontal')) }}
 
                     <div class="form-group">
-                        {{ Form::label('name', 'Role Name*', array('class' => 'col-md-2 control-label')) }}
+                        {{ Form::label('name', 'Permission Name*', array('class' => 'col-md-2 control-label')) }}
                         <div class="col-md-4">
                             {{ Form::text('name', null, array('class' => 'form-control', 'placeholder' => 'Role Name')) }}
                         </div>
