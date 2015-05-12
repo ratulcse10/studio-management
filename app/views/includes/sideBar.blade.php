@@ -172,25 +172,29 @@
                 </ul>
             </li>
 
-            <li{{ (Request::is('role*') ? ' class="active open"' : '') }}>
+            <li{{ (Request::is('role*','permission*') ? ' class="active open"' : '') }}>
                 <a href="javascript:;">
                     <i class="icon-magnet"></i>
                     <span class="title">Role Management</span>
                     <span class="arrow "></span>
                 </a>
                 <ul class="sub-menu">
-                    <li>
-                        <a href="{{route('role.create')}}">
-                            <i class="icon-badge"></i>
-                            Add Role</a>
-                    </li>
+
                     <li>
                         <a href="{{route('role.index')}}">
                             <i class="icon-folder"></i>
-                            Search Role</a>
+                            Manage Role</a>
                     </li>
 
+                    <li>
+                        <a href="{{route('permission.index')}}">
+                            <i class="icon-folder"></i>
+                            Manage Permission</a>
+                    </li>
+
+
                 </ul>
+
             </li>
 
 
