@@ -24,7 +24,8 @@ class PermissionsController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		return View::make('permissions.create')
+					->with('title',"Create Permission");
 	}
 
 	/**
@@ -35,7 +36,28 @@ class PermissionsController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		$rules = [
+					'name' => 'required|unique:permissions',
+					'display_name' => 'required'
+		];
+
+		$data = Input::all();
+
+		$validator = Validator::make($data,$rules);
+		if($validator->fails()){
+			return Redirect::back()->withInput()->withErrors($validator);
+		}
+
+		$permission = new Permission();
+
+		$permission->name = $data['name'];
+		$permission->display_name = $data['display_name'];
+		if($permission->save()){
+
+			return Redirect::route('permission.index')->with('success','Permission Created Successfully.');
+		}else{
+			return Redirect::route('permission.index')->with('error','Something went wrong.Try Again.');
+		}
 	}
 
 	/**

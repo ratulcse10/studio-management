@@ -37,7 +37,7 @@ class RoleController extends \BaseController {
 	public function store()
 	{
 		$rules = [
-					'name' => 'required'
+					'name' => 'required|unique:roles'
 		];
 
 		$data = Input::all();
