@@ -92,6 +92,7 @@
     {{ HTML::script('assets/global/plugins/datatables/media/js/jquery.dataTables.min.js') }}
     {{ HTML::script('assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js') }}
 
+
     <script type="text/javascript" charset="utf-8">
         $(document).ready(function() {
             $('#example').dataTable({
