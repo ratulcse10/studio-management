@@ -12,7 +12,6 @@ class StudentGraphController extends \BaseController {
 	{
 		$students = Student::all();
 
-
 		//Student Age Graph Sub-Module
 
 		return View::make('graph.student')

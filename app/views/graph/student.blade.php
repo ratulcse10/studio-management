@@ -22,7 +22,6 @@
                                 <th>Email</th>
                                 <th>Phone</th>
                                 <th>Gender</th>
-                                <th>Age</th>
                                 <th>Created_by</th>
 
                                 <th class="text-center">Actions</th>
@@ -36,7 +35,6 @@
                                     <td>{{ $student->email }}</td>
                                     <td>{{ $student->phone }}</td>
                                     <td>{{ $student->gender }}</td>
-                                    <td>{{ $student->created_at->diffForHumans() }}</td>
                                     <td>{{ $student->user->email }}</td>
 
 

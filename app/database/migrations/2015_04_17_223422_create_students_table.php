@@ -23,7 +23,7 @@ class CreateStudentsTable extends Migration {
 			$table->string('zipcode');
 			$table->string('state');
 			$table->string('phone');
-			$table->date('dob');
+			$table->dateTime('dob');
 			$table->enum('gender',['male','female','other']);
 			$table->timestamps();
 		});
