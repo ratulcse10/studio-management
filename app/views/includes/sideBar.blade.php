@@ -36,7 +36,7 @@
                             Search a Student</a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{{route('student.graph')}}">
                             <i class="icon-settings"></i>
                             Student Graphs</a>
                     </li>

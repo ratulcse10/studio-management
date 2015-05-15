@@ -21,7 +21,7 @@ class StudentsTableSeeder extends Seeder {
 				'zipcode' => $faker->countryCode,
 				'state' => $faker->streetName,
 				'phone' => $faker->phoneNumber,
-				'dob' => $faker->dateTime($max = 'now'),
+				'dob' => $faker->date($format = 'Y-m-d', $max = 'now') ,
 				'gender' => $faker->randomElement(['female','male'])
 
 			]);

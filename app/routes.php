@@ -24,12 +24,16 @@ Route::group(['before' => 'guest'], function(){
 Route::group(array('before' => 'auth'), function()
 {
 
+	//Student Module
 	Route::get('students',['as' => 'student.index', 'uses' => 'StudentController@index']);
 	Route::get('student/create',['as' => 'student.create', 'uses' => 'StudentController@create']);
 	Route::post('student/create',['as' => 'student.store', 'uses' => 'StudentController@store']);
 	Route::get('student/{id}/edit',['as' => 'student.edit', 'uses' => 'StudentController@edit']);
 	Route::put('student/{id}',['as' => 'student.update', 'uses' => 'StudentController@update']);
 	Route::delete('students/{id}',['as' => 'student.delete', 'uses' => 'StudentController@destroy']);
+
+	//Student Graph Sub-Module
+	Route::get('students/graph',['as' => 'student.graph', 'uses' => 'StudentGraphController@index']);
 
 	Route::get('logout', ['as' => 'logout', 'uses' => 'AuthController@logout']);
 	Route::get('dashboard', array('as' => 'dashboard', 'uses' => 'AuthController@dashboard'));
