@@ -13,45 +13,74 @@
 					</span>
                 </header>
                 <div class="panel-body">
-                    @if(count($students))
-                        <table class="display table table-bordered table-striped" id="example">
-                            <thead>
-                            <tr>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Email</th>
-                                <th>Phone</th>
-                                <th>Gender</th>
-                                <th>Age</th>
-                                <th>Created_by</th>
 
-                                <th class="text-center">Actions</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($students as $student)
-                                <tr>
-                                    <td>{{ $student->first_name }}</td>
-                                    <td>{{ $student->last_name }}</td>
-                                    <td>{{ $student->email }}</td>
-                                    <td>{{ $student->phone }}</td>
-                                    <td>{{ $student->gender }}</td>
-                                    <td>{{ $student->updated_at->diffInYears() }}</td>
-                                    <td>{{ $student->user->email }}</td>
+                    <div class="col-md-12">
+                        <div class="portlet box red">
+                                <div class="portlet-title">
+                                    <div class="caption">
+                                        <i class="icon-user"></i>Students Enrollment
+                                    </div>
+                                    <div class="tools">
+                                        <a href="javascript:;" class="collapse">
+                                        </a>
+                                        <a href="#portlet-config" data-toggle="modal" class="config">
+                                        </a>
+                                        <a href="javascript:;" class="reload">
+                                        </a>
+                                        <a href="javascript:;" class="remove">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="portlet-body">
+                                    <div id="chart_2" class="chart">
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="portlet box blue">
+                            <div class="portlet-title">
+                                <div class="caption">
+                                    <i class="icon-user"></i>Students by Age
+                                </div>
+                                <div class="tools">
+                                    <a href="#portlet-config" data-toggle="modal" class="config">
+                                    </a>
+                                    <a href="javascript:;" class="reload">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="portlet-body">
+                                <h4>Added a semi-transparent background to the labels and a custom labelFormatter function.</h4>
+                                <div id="pie_chart_6" class="chart">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="portlet box blue">
+                            <div class="portlet-title">
+                                <div class="caption">
+                                    <i class="icon-user"></i>Students by City
+                                </div>
+                                <div class="tools">
+                                    <a href="#portlet-config" data-toggle="modal" class="config">
+                                    </a>
+                                    <a href="javascript:;" class="reload">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="portlet-body">
+                                <h4>Added a semi-transparent background to the labels and a custom labelFormatter function.</h4>
+                                <div id="pie_chart_6" class="chart">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
 
-                                    <td class="text-center">
-                                        <a class="btn btn-xs btn-success btn-edit" href="{{ URL::route('student.edit', array('id' => $student->id)) }}">Edit</a>
-                                        <a href="#" class="btn btn-danger btn-xs btn-archive deleteBtn" data-toggle="modal" data-target="#deleteConfirm" deleteId="{{ $student->id }}">Delete</a>
-
-                                    </td>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
-                    @else
-                        No Data Found
-                    @endif
                 </div>
             </section>
         </div>
@@ -68,6 +97,22 @@
 @section('script')
     {{ HTML::script('assets/global/plugins/datatables/media/js/jquery.dataTables.min.js') }}
     {{ HTML::script('assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js') }}
+    {{ HTML::script('assets/admin/pages/scripts/charts-flotcharts.js') }}
 
+
+@stop
+
+<script>
+jQuery(document).ready(function() {       
+   // initiate layout and plugins
+   Metronic.init(); // init metronic core components
+Layout.init(); // init current layout
+Demo.init(); // init demo features
+   ChartsFlotcharts.init();
+   ChartsFlotcharts.initCharts();
+   ChartsFlotcharts.initPieCharts();
+   ChartsFlotcharts.initBarCharts();
+});
+</script>
 
 @stop
