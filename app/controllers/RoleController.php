@@ -130,4 +130,65 @@ class RoleController extends \BaseController {
 		//
 	}
 
+	public function assign(){
+		$roles = Role::all();
+		$users = User::with('roles')->get();
+		return View::make('roles.assign')
+					->with('roles',$roles)
+					->with('users',$users)
+					->with('title',"Assign Roles");
+	}
+
+	public function add($user_id){
+		try{
+			$user = User::findOrFail($user_id);
+			$roles = Role::all()->lists('name','id');
+			$users = User::find($user_id)->roles()->lists('name');
+			$results = array_intersect($roles, $users);
+		}catch (Exception $ex){
+			return Redirect::back()->with('error','No user found.Try Again.');
+		}
+
+
+		return View::make('roles.add')
+					->with('roles',$roles)
+					->with('results',$results)
+					->with('user',$user)
+					->with('title',"Assign Roles");
+
+
+
+	}
+
+	public function doAdd($user_id){
+
+		try{
+			$user = User::findOrFail($user_id);
+			 $data = Input::all();
+			if(count($data)>1){
+
+				$roles = Role::all()->lists('id','name');
+				$add_roles = array_intersect($roles, $data);
+
+				foreach($roles as $role_id){
+					$role = Role::find($role_id);
+					$user->detachRole($role);
+				}
+
+				foreach($add_roles as $role_id){
+					$role = Role::find($role_id);
+					$user->attachRole($role);
+				}
+
+
+				return Redirect::route('role.assign')->with('success','Role Assigned successfully.');
+			}else{
+				return Redirect::back()->with('error','You Must Select At least One Role.');
+			}
+		}catch (Exception $ex){
+			return Redirect::back()->with('error','No user found.Try Again.');
+		}
+
+	}
+
 }

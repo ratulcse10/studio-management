@@ -192,6 +192,12 @@
                             Manage Permission</a>
                     </li>
 
+                    <li>
+                        <a href="{{route('role.assign')}}">
+                            <i class="icon-plus"></i>
+                            Assign Role</a>
+                    </li>
+
 
                 </ul>
 

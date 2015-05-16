@@ -91,6 +91,10 @@ Route::group(array('before' => 'auth'), function()
 	Route::get('permission/{id}/edit',['as' => 'permission.edit', 'uses' => 'PermissionsController@edit']);
 	Route::put('permission/{id}',['as' => 'permission.update', 'uses' => 'PermissionsController@update']);
 	Route::delete('permissions/{id}',['as' => 'permission.delete', 'uses' => 'PermissionsController@destroy']);
+
+	Route::get('role/assign',['as' => 'role.assign', 'uses' => 'RoleController@assign']);
+	Route::get('role/{user_id}/add',['as' => 'role.add', 'uses' => 'RoleController@add']);
+	Route::post('role/{user_id}/add',['as' => 'role.doAdd', 'uses' => 'RoleController@doAdd']);
 });
 
 Route::get('test',function(){
