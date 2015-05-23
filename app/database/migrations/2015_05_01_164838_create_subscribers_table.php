@@ -20,6 +20,7 @@ class CreateSubscribersTable extends Migration {
 			$table->string('last_name');
 			$table->string('address');
 			$table->string('phone');
+			$table->string('social_security');
 			$table->enum('gender',['male','female','other']);
 			$table->timestamps();
 

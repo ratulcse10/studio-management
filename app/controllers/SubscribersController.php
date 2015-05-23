@@ -25,6 +25,14 @@ class SubscribersController extends \BaseController {
 	{
 
 		$permissions = Permission::all()->lists('display_name','id');
+
+		/*
+		 Get All the role for dropdown list
+		 then remove the admin role from array for security
+		 **/
+		$roles = Role::all()->lists('name','id');
+		unset($roles[1]);
+
 		$gender = [
 					''      => '--select--',
 					'male' => 'Male',
@@ -33,6 +41,7 @@ class SubscribersController extends \BaseController {
 		];
 		return View::make('subscribers.create')
 					->with('gender',$gender)
+					->with('roles',$roles)
 					->with('permissions',$permissions)
 					->with('title','Create User');
 	}
@@ -57,7 +66,9 @@ class SubscribersController extends \BaseController {
 					'password'   => 'required',
 					'address'    => 'required',
 					'phone'      => 'required',
-					'gender'     => 'required'
+					'social_security'=>'required|numeric|digits:9',
+					'gender'     => 'required',
+					'role_id'     => 'required'
 		];
 
 		$data = Input::all();
@@ -73,7 +84,7 @@ class SubscribersController extends \BaseController {
 		$user->email = $data['email'];
 		$user->password = Hash::make($data['password']);
 
-		if($user->save() and CustomHelper::assignUserRole($user) and CustomHelper::assignUserPermission($user,$data['permissions'])){
+		if($user->save() and CustomHelper::assignRole($user,$data['role_id']) and CustomHelper::assignUserPermission($user,$data['permissions'])){
 			$subscriber = new Subscriber();
 			$subscriber->user_id = $user->id;
 			$subscriber->first_name = $data['first_name'];
@@ -81,6 +92,7 @@ class SubscribersController extends \BaseController {
 			$subscriber->address = $data['address'];
 			$subscriber->phone = $data['phone'];
 			$subscriber->gender = $data['gender'];
+			$subscriber->social_security = $data['social_security'];
 
 			if($subscriber->save()){
 				return Redirect::route('subscriber.index')->with('success',"User Created Successfully");

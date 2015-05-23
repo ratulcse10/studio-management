@@ -46,6 +46,13 @@
                             </div>
                         </div>
 
+                        <div class="form-group">
+                            {{ Form::label('role_id', 'User Type', array('class' => 'col-md-4 control-label required')) }}
+                            <div class="col-md-8">
+                                {{ Form::select('role_id', $roles, null, array('class' => 'form-control', 'id' => 'role')) }}
+                            </div>
+                        </div>
+
                     </div>
 
 
@@ -68,6 +75,13 @@
                             {{ Form::label('phone', 'Phone*', array('class' => 'col-md-4 control-label')) }}
                             <div class="col-md-8">
                                 {{ Form::text('phone', null, array('class' => 'form-control', 'placeholder' => 'Phone')) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            {{ Form::label('social_security', 'Social Security #', array('class' => 'col-md-4 control-label')) }}
+                            <div class="col-md-8">
+                                {{ Form::text('social_security', null, array('class' => 'form-control', 'placeholder' => 'Social Security')) }}
                             </div>
                         </div>
 
@@ -109,6 +123,7 @@
         $(document).ready(function() {
 
             $("#gender").select2();
+            $("#role").select2();
 
 
         });

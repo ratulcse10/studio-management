@@ -3,9 +3,10 @@
 
 class CustomHelper{
 
-	public static function assignUserRole(User $newUser){
-		$user = Role::find(2);
+	public static function assignRole(User $newUser,$role_id){
+
 		try{
+			$user = Role::find($role_id);
 			$newUser->attachRole($user);
 
 			return true;

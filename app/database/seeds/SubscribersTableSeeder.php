@@ -17,6 +17,7 @@ class SubscribersTableSeeder extends Seeder {
 						'last_name' => $faker->lastName,
 						'address' => $faker->address,
 						'phone' => $faker->phoneNumber,
+						'social_security' => "test",
 						'gender' => $faker->randomElement(['female','male'])
 			]);
 		}
