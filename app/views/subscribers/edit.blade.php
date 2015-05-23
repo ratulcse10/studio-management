@@ -67,6 +67,22 @@
 
                     </div>
 
+                    <div class="col-md-12">
+                        @foreach($permissions as $key => $val)
+                            @if(in_array($key, $selectedPermissions))
+
+                                <div class="form-group">
+
+                                    <input type="checkbox" name="permissions[]" value="{{$key}}" checked/>{{$val}} <br />
+                                </div>
+                            @else
+                                <div class="form-group">
+                                    <input type="checkbox" name="permissions[]" value="{{$key}}" />{{$val}} <br />
+                                </div>
+                            @endif
+                        @endforeach
+                    </div>
+
 
 
                     <div class="form-group">

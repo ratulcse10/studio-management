@@ -73,6 +73,16 @@
 
                     </div>
 
+                    <div class="col-md-12">
+                        @foreach($permissions as $key => $val)
+
+                                <div class="form-group">
+                                    <input type="checkbox" name="permissions[]" value="{{$key}}" />{{$val}} <br />
+                                </div>
+
+                        @endforeach
+                    </div>
+
 
                     <div class="form-group">
                         <div class="col-lg-offset-5 col-lg-6">

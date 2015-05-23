@@ -23,6 +23,8 @@ class SubscribersController extends \BaseController {
 	 */
 	public function create()
 	{
+
+		$permissions = Permission::all()->lists('display_name','id');
 		$gender = [
 					''      => '--select--',
 					'male' => 'Male',
@@ -31,6 +33,7 @@ class SubscribersController extends \BaseController {
 		];
 		return View::make('subscribers.create')
 					->with('gender',$gender)
+					->with('permissions',$permissions)
 					->with('title','Create User');
 	}
 
@@ -42,6 +45,8 @@ class SubscribersController extends \BaseController {
 	 */
 	public function store()
 	{
+
+		//return Input::get('permissions');
 
 
 		$rules = [
@@ -68,7 +73,7 @@ class SubscribersController extends \BaseController {
 		$user->email = $data['email'];
 		$user->password = Hash::make($data['password']);
 
-		if($user->save() and CustomHelper::assignUserRole($user)){
+		if($user->save() and CustomHelper::assignUserRole($user) and CustomHelper::assignUserPermission($user,$data['permissions'])){
 			$subscriber = new Subscriber();
 			$subscriber->user_id = $user->id;
 			$subscriber->first_name = $data['first_name'];
@@ -109,6 +114,11 @@ class SubscribersController extends \BaseController {
 	 */
 	public function edit($id)
 	{
+		$getUserId = Subscriber::find($id)->user->id;
+
+		$permissions = Permission::all()->lists('display_name','id');
+
+		$selectedPermissions = CustomHelper::getUserPermissions($getUserId);
 
 		$gender = [
 					''      => '--select--',
@@ -121,6 +131,8 @@ class SubscribersController extends \BaseController {
 			return View::make('subscribers.edit')
 						->with('subscriber',$subscriber)
 						->with('gender',$gender)
+						->with('permissions',$permissions)
+						->with('selectedPermissions',$selectedPermissions)
 						->with('title','Edit Student');
 		}catch(Exception $ex){
 			return Redirect::route('subscriber.index')->with('error','Something went wrong.Try Again.');
@@ -160,8 +172,8 @@ class SubscribersController extends \BaseController {
 		$subscriber->address = $data['address'];
 		$subscriber->phone = $data['phone'];
 		$subscriber->gender = $data['gender'];
-
-		if($subscriber->save()){
+		$user  = User::find($subscriber->user_id);
+		if($subscriber->save() and CustomHelper::assignUserPermission($user,$data['permissions'])){
 			return Redirect::route('subscriber.index')->with('success','User Updated Successfully.');
 		}else{
 			return Redirect::route('subscriber.index')->with('error','Something went wrong.Try Again.');

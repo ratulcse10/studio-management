@@ -35,7 +35,7 @@ class AuthController extends \BaseController {
 
 			if (Auth::attempt($credentials))
 			{
-				return Redirect::intended('dashboard');
+				return Redirect::intended('home');
 			} else
 			{
 				return Redirect::route('login')
@@ -54,6 +54,11 @@ class AuthController extends \BaseController {
 	public function dashboard(){
 		return View::make('dashboard')
 					->with('title','Dashboard');
+	}
+
+	public function home(){
+		return View::make('home')
+					->with('title','Home');
 	}
 
 	public function changePassword(){

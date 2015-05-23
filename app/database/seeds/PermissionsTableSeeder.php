@@ -8,7 +8,13 @@ class PermissionsTableSeeder extends Seeder {
 	public function run()
 	{
 		$permissions = [
-			'read' => "Read"
+					'dashboard_view' => "Dashboard",
+					'student_view' => "Students",
+					'class_view' => "Classes",
+					'marketing_view' => "Marketing",
+					'user_view' => "Users",
+					'finance_view' => "Finances",
+					'advance_search_view' => "Advance Search"
 		];
 
 		foreach($permissions as $permission_name => $display_name)

@@ -10,12 +10,16 @@ class EntrustTableSeeder extends Seeder {
 		$admin = Role::find(1);
 		$user = Role::find(2);
 
+		//$read = Permission::find(1);
+		$permissions = Permission::all();
 
-		$read = Permission::find(1);
+		foreach($permissions as $permission){
+			$admin->attachPermission($permission);
+		}
 
 
-		$admin->attachPermission($read);
-		$user->attachPermission($read);
+		/*$admin->attachPermission($read);
+		$user->attachPermission($read);*/
 
 
 		$user1 = User::find(1);

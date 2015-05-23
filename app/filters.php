@@ -88,3 +88,50 @@ Route::filter('csrf', function()
 		throw new Illuminate\Session\TokenMismatchException;
 	}
 });
+
+Route::filter('Admin',function(){
+	if(! Entrust::hasRole(Config::get('customConfig.roles.admin'))){
+		return Redirect::to('/');
+	}
+});
+
+
+Route::filter('dashboard',function(){
+	if(! CustomHelper::userHasPermission(Auth::user(),[Config::get('customConfig.permissions.dashboard')])){
+		return Redirect::to('/');
+	}
+});
+
+Route::filter('student',function(){
+	if(! CustomHelper::userHasPermission(Auth::user(),[Config::get('customConfig.permissions.student')])){
+		return Redirect::to('/');
+	}
+});
+
+Route::filter('class',function(){
+	if(! CustomHelper::userHasPermission(Auth::user(),[Config::get('customConfig.permissions.class')])){
+		return Redirect::to('/');
+	}
+});
+
+Route::filter('marketing',function(){
+	if(! CustomHelper::userHasPermission(Auth::user(),[Config::get('customConfig.permissions.marketing')])){
+		return Redirect::to('/');
+	}
+});
+Route::filter('users',function(){
+	if(! CustomHelper::userHasPermission(Auth::user(),[Config::get('customConfig.permissions.users')])){
+		return Redirect::to('/');
+	}
+});
+Route::filter('finance',function(){
+	if(! CustomHelper::userHasPermission(Auth::user(),[Config::get('customConfig.permissions.finance')])){
+		return Redirect::to('/');
+	}
+});
+
+Route::filter('advance_search',function(){
+	if(! CustomHelper::userHasPermission(Auth::user(),[Config::get('customConfig.permissions.advance_search')])){
+		return Redirect::to('/');
+	}
+});
