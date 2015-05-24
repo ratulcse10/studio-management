@@ -85,6 +85,27 @@
                             </div>
                         </div>
 
+                        <div class="form-group">
+                            {{ Form::label('payment_type', 'Payment Type', array('class' => 'col-md-4 control-label required')) }}
+                            <div class="col-md-8">
+                                {{ Form::select('payment_type', $paymentType, null, array('class' => 'form-control', 'id' => 'payment')) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group" id="paymentCycleDiv">
+                            {{ Form::label('payment_cycle', 'Payment Cycle', array('class' => 'col-md-4 control-label required')) }}
+                            <div class="col-md-8">
+                                {{ Form::select('payment_cycle', $paymentCycle, null, array('class' => 'form-control', 'id' => 'payment_cycle')) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group" id="paymentAmountDiv">
+                            {{ Form::label('payment_amount', 'Payment Amount', array('class' => 'col-md-4 control-label')) }}
+                            <div class="col-md-8">
+                                {{ Form::text('payment_amount', null, array('class' => 'form-control', 'placeholder' => 'Payment Amount')) }}
+                            </div>
+                        </div>
+
                     </div>
 
                     <div class="col-md-12">
@@ -122,8 +143,33 @@
     <script type="text/javascript">
         $(document).ready(function() {
 
+
             $("#gender").select2();
             $("#role").select2();
+            $("#payment").select2();
+            $("#payment_cycle").select2();
+            var paymentType = $("#payment");
+            var paymentCycleDiv =  $("#paymentCycleDiv");
+            var paymentAmountDiv =  $("#paymentAmountDiv");
+            console.log(paymentAmountDiv);
+            paymentCycleDiv.detach();
+
+            $('#payment').on('change', function (e) {
+                var optionSelected = $(this).find("option:selected");
+                var valueSelected  = optionSelected.val();
+                if(valueSelected ==="salary"){
+
+                    paymentCycleDiv.insertAfter( paymentType );
+                    console.log( paymentCycleDiv[0].className);
+                }else if(valueSelected ==="custom"){
+                    $("#paymentCycleDiv").detach();
+                    $("#paymentAmountDiv").detach();
+                }else{
+                    $("#paymentCycleDiv").detach();
+                    paymentAmountDiv.insertAfter( paymentType );
+                }
+
+            });
 
 
         });

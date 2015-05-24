@@ -15,15 +15,24 @@ return [
 						'administrator' => "Administrator"
 			],
 			'permissions' => [
-				'dashboard' => 'dashboard_view',
-				'student' => 'student_view',
-				'class' => 'class_view',
-				'marketing' => 'marketing_view',
-				'users' => 'user_view',
-				'finance' => 'finance_view',
-				'advance_search' => 'advance_search_view'
+						'dashboard'      => 'dashboard_view',
+						'student'        => 'student_view',
+						'class'          => 'class_view',
+						'marketing'      => 'marketing_view',
+						'users'          => 'user_view',
+						'finance'        => 'finance_view',
+						'advance_search' => 'advance_search_view'
+			],
+			'paymentType' => [
+				'hourly' => 'hourly',
+				'salary' => 'salary',
+				'custom' => 'custom'
 
+			],
+			'paymentCycle' => [
+						'weekly' => 'weekly',
+						'biweekly' => 'biweekly',
+						'monthly' => 'monthly'
 
-
-			]
+			],
 ];

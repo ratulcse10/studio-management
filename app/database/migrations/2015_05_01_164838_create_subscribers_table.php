@@ -22,6 +22,9 @@ class CreateSubscribersTable extends Migration {
 			$table->string('phone');
 			$table->string('social_security');
 			$table->enum('gender',['male','female','other']);
+			$table->enum('payment_type', array('hourly', 'salary','custom'))->default('custom');
+			$table->enum('payment_cycle', array('weekly', 'biweekly','monthly'))->nullable();
+			$table->double('payment_amount', 15, 2)->nullable();
 			$table->timestamps();
 
 			$table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');

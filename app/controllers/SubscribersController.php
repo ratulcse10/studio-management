@@ -24,15 +24,23 @@ class SubscribersController extends \BaseController {
 	public function create()
 	{
 
+		//get all the payment type for Dropdown
+		$paymentType = Config::get('customConfig.paymentType');
+
+		//get all the payment Cycle for Dropdown
+		$paymentCycle = Config::get('customConfig.paymentCycle');
+
+
+
+		//get all permissions for permission CheckBox
 		$permissions = Permission::all()->lists('display_name','id');
 
-		/*
-		 Get All the role for dropdown list
-		 then remove the admin role from array for security
-		 **/
+
+		 //Get All the role for dropdown list then remove the admin role from array for security
 		$roles = Role::all()->lists('name','id');
 		unset($roles[1]);
 
+		//create gender array for gender dropdown
 		$gender = [
 					''      => '--select--',
 					'male' => 'Male',
@@ -43,6 +51,8 @@ class SubscribersController extends \BaseController {
 					->with('gender',$gender)
 					->with('roles',$roles)
 					->with('permissions',$permissions)
+					->with('paymentType',$paymentType)
+					->with('paymentCycle',$paymentCycle)
 					->with('title','Create User');
 	}
 
@@ -68,10 +78,21 @@ class SubscribersController extends \BaseController {
 					'phone'      => 'required',
 					'social_security'=>'required|numeric|digits:9',
 					'gender'     => 'required',
+					'payment_type'     => 'required',
+					'payment_amount'     => 'numeric',
 					'role_id'     => 'required'
 		];
 
+
+
 		$data = Input::all();
+
+		if($data['payment_type'] === Config::get('customConfig.paymentType.custom')){
+			$data['payment_amount'] = null;
+			$data['payment_cycle'] = null;
+		}elseif($data['payment_type'] === Config::get('customConfig.paymentType.hourly')){
+			$data['payment_cycle'] = null;
+		}
 
 		$validator = Validator::make($data,$rules);
 
@@ -93,6 +114,9 @@ class SubscribersController extends \BaseController {
 			$subscriber->phone = $data['phone'];
 			$subscriber->gender = $data['gender'];
 			$subscriber->social_security = $data['social_security'];
+			$subscriber->payment_type = $data['payment_type'];
+			$subscriber->payment_amount = $data['payment_amount'];
+			$subscriber->payment_cycle = $data['payment_cycle'];
 
 			if($subscriber->save()){
 				return Redirect::route('subscriber.index')->with('success',"User Created Successfully");
