@@ -11,7 +11,7 @@ return [
 						'siteName' => 'Studio'
 			],
 			'roles' => [
-						'Admin' => 'Admin',
+						'admin' => 'Admin',
 						'administrator' => "Administrator"
 			],
 			'permissions' => [
