@@ -43,7 +43,7 @@ class CustomHelper{
 	}
 
 	public static function userHasPermission(User $user,$permissions){
-		if($user->hasRole(Config::get('customConfig.roles.Admin'))){
+		if($user->hasRole(Config::get('customConfig.roles.admin'))){
 			return true;
 		}
 		$getUserPermissions = DB::table('permission_user')->where('user_id', '=',$user->id)->lists('permission_id');
