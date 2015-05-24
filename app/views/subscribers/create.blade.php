@@ -85,7 +85,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group" id="paymentTypeDiv">
                             {{ Form::label('payment_type', 'Payment Type', array('class' => 'col-md-4 control-label required')) }}
                             <div class="col-md-8">
                                 {{ Form::select('payment_type', $paymentType, null, array('class' => 'form-control', 'id' => 'payment')) }}
@@ -148,18 +148,21 @@
             $("#role").select2();
             $("#payment").select2();
             $("#payment_cycle").select2();
-            var paymentType = $("#payment");
+            var paymentType = $("#paymentTypeDiv");
             var paymentCycleDiv =  $("#paymentCycleDiv");
             var paymentAmountDiv =  $("#paymentAmountDiv");
             console.log(paymentAmountDiv);
             paymentCycleDiv.detach();
 
             $('#payment').on('change', function (e) {
+                $("#paymentCycleDiv").detach();
+                $("#paymentAmountDiv").detach();
                 var optionSelected = $(this).find("option:selected");
                 var valueSelected  = optionSelected.val();
                 if(valueSelected ==="salary"){
 
                     paymentCycleDiv.insertAfter( paymentType );
+                    paymentAmountDiv.insertAfter( paymentCycleDiv );
                     console.log( paymentCycleDiv[0].className);
                 }else if(valueSelected ==="custom"){
                     $("#paymentCycleDiv").detach();
