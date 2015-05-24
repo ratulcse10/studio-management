@@ -152,7 +152,10 @@
             var paymentCycleDiv =  $("#paymentCycleDiv");
             var paymentAmountDiv =  $("#paymentAmountDiv");
             console.log(paymentAmountDiv);
-            paymentCycleDiv.detach();
+            if($("#payment").val()!=="salary"){
+                paymentCycleDiv.detach();
+            }
+
 
             $('#payment').on('change', function (e) {
                 $("#paymentCycleDiv").detach();
