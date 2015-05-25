@@ -70,28 +70,36 @@ class SubscribersController extends \BaseController {
 
 		$rules = [
 
-					'first_name' => 'required',
-					'last_name'  => 'required',
-					'email'      => 'required|email|unique:users',
-					'password'   => 'required',
-					'address'    => 'required',
-					'phone'      => 'required',
-					'social_security'=>'required|numeric|digits:9',
-					'gender'     => 'required',
-					'payment_type'     => 'required',
-					'payment_amount'     => 'numeric',
-					'role_id'     => 'required'
+					'first_name'      => 'required',
+					'last_name'       => 'required',
+					'email'           => 'required|email|unique:users',
+					'password'        => 'required',
+					'address'         => 'required',
+					'phone'           => 'required',
+					'social_security' => 'required|numeric|digits:9',
+					'gender'          => 'required',
+					'payment_type'    => 'required',
+					'payment_amount'  => 'required|numeric',
+					'payment_cycle'   => 'required',
+					'role_id'         => 'required'
 		];
 
 
 
 		$data = Input::all();
 
+
+
 		if($data['payment_type'] === Config::get('customConfig.paymentType.custom')){
 			$data['payment_amount'] = null;
 			$data['payment_cycle'] = null;
+
+			unset($rules['payment_amount']);
+			unset($rules['payment_cycle']);
 		}elseif($data['payment_type'] === Config::get('customConfig.paymentType.hourly')){
 			$data['payment_cycle'] = null;
+
+			unset($rules['payment_cycle']);
 		}
 
 		$validator = Validator::make($data,$rules);
