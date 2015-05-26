@@ -21,7 +21,13 @@ class UsersTableSeeder extends Seeder {
 								'password'   => Hash::make('user'),
 								'created_at' => date('Y-m-d H:i:s'),
 								'updated_at' => date('Y-m-d H:i:s')
-					]
+					],
+					[
+								'email'      => 'admin@gmail.com',
+								'password'   => Hash::make('a'),
+								'created_at' => date('Y-m-d H:i:s'),
+								'updated_at' => date('Y-m-d H:i:s')
+					],
 
 		];
 

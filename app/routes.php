@@ -164,10 +164,10 @@ Route::get('test',function(){
 //	];
 
 	$user = User::find(4);
+	return Permission::all()->lists('name');
 
 
 
 
-
-	dd(CustomHelper::userHasPermission($user,['dashboard_view','marketing_view'])) ;
+	//dd(CustomHelper::userHasPermission($user,['dashboard_view','marketing_view'])) ;
 });

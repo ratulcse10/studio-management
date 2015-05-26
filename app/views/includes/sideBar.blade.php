@@ -172,6 +172,8 @@
                 </ul>
             </li>
 
+            @if(Entrust::hasRole(Config::get('customConfig.roles.admin')))
+
             <li{{ (Request::is('role*','permission*') ? ' class="active open"' : '') }}>
                 <a href="javascript:;">
                     <i class="icon-magnet"></i>
@@ -202,6 +204,7 @@
                 </ul>
 
             </li>
+            @endif
 
 
         </ul>
