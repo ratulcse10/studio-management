@@ -140,7 +140,7 @@
                             //console.log(item);
                             var creator = {
                                 value : item.value,
-                                label : item.age,
+                                label : "Age -"+item.age,
                                 color : 'rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')',
                                 highlight : 'rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')'
                             };
@@ -154,7 +154,7 @@
 
                     .fail(function() {
                         console.log('Oh no, something went wrong!');
-                        $('#studentCity').replaceWith('<h2>Oh no, something went wrong!</h2>');
+                        $('#studentAge').replaceWith('<h2>Oh no, something went wrong!</h2>');
 
                     });
 
