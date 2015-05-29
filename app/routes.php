@@ -149,8 +149,10 @@ Route::group(array('before' => 'auth'), function()
 
 
 
-
 });
+
+Route::get('graphdata/student/city',['as' => 'student.graph.city','uses' => 'StudentGraphController@cityData']);
+Route::get('graphdata/student/age',['as' => 'student.graph.age','uses' => 'StudentGraphController@ageData']);
 
 Route::get('test',function(){
 //	$faker = Faker\Factory::create();
@@ -163,8 +165,20 @@ Route::get('test',function(){
 //		'to' => $to
 //	];
 
-	$user = User::find(4);
-	return Permission::all()->lists('name');
+$students = Student::get();
+	$friends = $students->lists('age');
+	$friends_count = array_count_values($friends);
+	ksort($friends_count);
+	$process = [];
+
+	foreach($friends_count as $key=> $value){
+		$obj = new stdClass();
+		$obj->value = $value;
+		$obj->age = $key;
+		array_push($process,$obj);
+	}
+
+	return Response::json($process);
 
 
 

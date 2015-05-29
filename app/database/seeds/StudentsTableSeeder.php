@@ -9,6 +9,12 @@ class StudentsTableSeeder extends Seeder {
 	{
 		$faker = Faker::create();
 
+		$city_array = [];
+
+		for($i =0 ; $i<5; $i++){
+			$city_array[$i] = $faker->city;
+		}
+
 		foreach(range(1, 10) as $index)
 		{
 			Student::create([
@@ -17,7 +23,7 @@ class StudentsTableSeeder extends Seeder {
 				'email' => $faker->unique()->email,
 				'created_by' => 1,
 				'address' => $faker->address,
-				'city' => $faker->city,
+				'city' => $city_array[$faker->numberBetween(0,4)],
 				'zipcode' => $faker->countryCode,
 				'state' => $faker->streetName,
 				'phone' => $faker->phoneNumber,

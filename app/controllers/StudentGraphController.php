@@ -19,74 +19,33 @@ class StudentGraphController extends \BaseController {
 					
 	}
 
-	/**
-	 * Show the form for creating a new resource.
-	 * GET /studentgraph/create
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		//
+	public function cityData(){
+		$data = DB::table('students')
+					->select( DB::raw("city as city"), DB::raw('count(*) as value'))
+					->groupBy('city')
+					->orderBy('value', 'DESC')
+					->orderBy('city', 'ASC')
+					->get();
+
+		return $data;
 	}
 
-	/**
-	 * Store a newly created resource in storage.
-	 * POST /studentgraph
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
-		//
-	}
+	public function ageData(){
+		$students = Student::get();
+		$list = $students->lists('age');
+		$list_count = array_count_values($list);
+		ksort($list_count);
 
-	/**
-	 * Display the specified resource.
-	 * GET /studentgraph/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
+		$process = [];
 
-	/**
-	 * Show the form for editing the specified resource.
-	 * GET /studentgraph/{id}/edit
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
+		foreach($list_count as $key=> $value){
+			$obj = new stdClass();
+			$obj->value = $value;
+			$obj->age = $key;
+			array_push($process,$obj);
+		}
 
-	/**
-	 * Update the specified resource in storage.
-	 * PUT /studentgraph/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
-
-	/**
-	 * Remove the specified resource from storage.
-	 * DELETE /studentgraph/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
+		return Response::json($process);
 	}
 
 }

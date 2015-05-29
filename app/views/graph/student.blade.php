@@ -99,6 +99,65 @@
             var studentAge = $("#studentAge").get(0).getContext("2d");
             var studentCity = $("#studentCity").get(0).getContext("2d");
 
+            var studentGraphURLCity = "<?php echo URL::route('student.graph.city'); ?>";
+            var studentGraphURLAge = "<?php echo URL::route('student.graph.age'); ?>";
+
+            var studentCityData = [];
+            $.getJSON(studentGraphURLCity)
+
+                    .done(function(data) {
+                        $.each(data, function(i, item) {
+                            //console.log(item);
+                            var creator = {
+                                value : item.value,
+                                label : item.city,
+                                color : 'rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')',
+                                highlight : 'rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')'
+                            };
+
+                            studentCityData.push(creator);
+
+                        });
+
+                        var studentCityChart = new Chart(studentCity).Pie(studentCityData, {segmentShowStroke : true});
+                    })
+
+                    .fail(function() {
+                        console.log('Oh no, something went wrong!');
+                        $('#studentCity').replaceWith('<h2>Oh no, something went wrong!</h2>');
+
+                    });
+
+
+
+            //Age Graph Data
+
+            var studentAgeData = [];
+            $.getJSON(studentGraphURLAge)
+
+                    .done(function(data) {
+                        $.each(data, function(i, item) {
+                            //console.log(item);
+                            var creator = {
+                                value : item.value,
+                                label : item.age,
+                                color : 'rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')',
+                                highlight : 'rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')'
+                            };
+
+                            studentAgeData.push(creator);
+
+                        });
+
+                        var studentAgeChart = new Chart(studentAge).Pie(studentAgeData, {segmentShowStroke : true});
+                    })
+
+                    .fail(function() {
+                        console.log('Oh no, something went wrong!');
+                        $('#studentCity').replaceWith('<h2>Oh no, something went wrong!</h2>');
+
+                    });
+
 
             var studentEnrollmentData = {
                 labels: ["January", "February", "March", "April", "May", "June", "July"],
@@ -126,29 +185,11 @@
                 ]
             };
 
-            var studentAgeData = [
-                {
-                    value: 300,
-                    color:"#F7464A",
-                    highlight: "#FF5A5E",
-                    label: "Red"
-                },
-                {
-                    value: 50,
-                    color: "#46BFBD",
-                    highlight: "#5AD3D1",
-                    label: "Green"
-                },
-                {
-                    value: 100,
-                    color: "#FDB45C",
-                    highlight: "#FFC870",
-                    label: "Yellow"
-                }
-            ]
 
-            var studentAgeChart = new Chart(studentAge).Pie(studentAgeData, {segmentShowStroke : true});
-            var studentCityChart = new Chart(studentCity).Pie(studentAgeData, {segmentShowStroke : true});
+
+
+
+
             var studentEnrollmentChart = new Chart(studentEnrollment).Line(studentEnrollmentData, {bezierCurve: false});
         });
     </script>
