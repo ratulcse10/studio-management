@@ -15,7 +15,7 @@ class StudentsTableSeeder extends Seeder {
 			$city_array[$i] = $faker->city;
 		}
 
-		foreach(range(1, 10) as $index)
+		foreach(range(1, 50) as $index)
 		{
 			Student::create([
 				'first_name' => $faker->firstName,
@@ -27,8 +27,9 @@ class StudentsTableSeeder extends Seeder {
 				'zipcode' => $faker->countryCode,
 				'state' => $faker->streetName,
 				'phone' => $faker->phoneNumber,
-				'dob' => $faker->date($format='Y-m-d',$max = 'now') ,
-				'gender' => $faker->randomElement(['female','male'])
+				'dob' => $faker->dateTimeBetween($startDate = '-30 year', $endDate = 'now') ,
+				'gender' => $faker->randomElement(['female','male']),
+				'created_at' => $faker->dateTimeBetween($startDate = '-1 year', $endDate = 'now')
 
 			]);
 		}

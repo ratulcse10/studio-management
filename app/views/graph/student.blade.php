@@ -159,38 +159,100 @@
                     });
 
 
-            var studentEnrollmentData = {
-                labels: ["January", "February", "March", "April", "May", "June", "July"],
-                datasets: [
-                    {
-                        label: "My First dataset",
-                        fillColor: "rgba(220,220,220,0.2)",
-                        strokeColor: "rgba(220,220,220,1)",
-                        pointColor: "rgba(220,220,220,1)",
-                        pointStrokeColor: "#fff",
-                        pointHighlightFill: "#fff",
-                        pointHighlightStroke: "rgba(220,220,220,1)",
-                        data: [65, 59, 80, 81, 56, 55, 40]
-                    },
-                    {
-                        label: "My Second dataset",
-                        fillColor: "rgba(151,187,205,0.2)",
-                        strokeColor: "rgba(151,187,205,1)",
-                        pointColor: "rgba(151,187,205,1)",
-                        pointStrokeColor: "#fff",
-                        pointHighlightFill: "#fff",
-                        pointHighlightStroke: "rgba(151,187,205,1)",
-                        data: [28, 48, 40, 19, 86, 27, 90]
-                    }
-                ]
-            };
+            var studentGraphURLEnrollCurrent = "<?php echo URL::route('student.graph.enroll',date("Y")); ?>";
+            var studentGraphURLEnrollPrevious = "<?php echo URL::route('student.graph.enroll',date("Y",strtotime("-1 year"))); ?>";
+            console.log(studentGraphURLEnrollCurrent);
+            console.log(studentGraphURLEnrollPrevious);
+
+
+            var studentEnrollCurrentData = [0,0,0,0,0,0,0,0,0,0,0,0];
+            var firstPromise = $.Deferred();
+            $.get(studentGraphURLEnrollCurrent)
+
+                    .done(function(data) {
+                        $.each(data, function(i, item) {
+
+                            studentEnrollCurrentData[item.month] = item.value;
+                            firstPromise.resolve( studentEnrollCurrentData );
+
+                        });
+
+                        //console.log(studentEnrollCurrentData);
+                    })
+
+                    .fail(function() {
+                        console.log('Oh no, something went wrong!');
+                        $('#studentEnrollment').replaceWith('<h2>Oh no, something went wrong!</h2>');
+
+                    });
+
+
+            var studentEnrollPreviousData = [0,0,0,0,0,0,0,0,0,0,0,0];
+            var secondPromise = $.Deferred();
+            $.get(studentGraphURLEnrollPrevious)
+
+                    .done(function(data) {
+                        $.each(data, function(i, item) {
+
+                            studentEnrollPreviousData[item.month] = item.value;
+
+                        });
+                        secondPromise.resolve( studentEnrollPreviousData );
+
+
+                        //console.log(studentEnrollPreviousData);
+                    })
+
+                    .fail(function() {
+                        console.log('Oh no, something went wrong!');
+                        $('#studentEnrollment').replaceWith('<h2>Oh no, something went wrong!</h2>');
+
+                    });
+
+
+            $.when(firstPromise, secondPromise).done(function(studentEnrollCurrentData, studentEnrollPreviousData) {
+
+
+                console.log(studentEnrollPreviousData);
+                var studentEnrollmentData = {
+                    labels: ["January", "February", "March", "April", "May", "June", "July","August",'September',"October","November","December"],
+                    datasets: [
+                        {
+                            label: "2015",
+                            fillColor: "rgba(220,220,220,0.2)",
+                            strokeColor: "rgba(220,220,220,1)",
+                            pointColor: "rgba(220,220,220,1)",
+                            pointStrokeColor: "#fff",
+                            pointHighlightFill: "#fff",
+                            pointHighlightStroke: "rgba(220,220,220,1)",
+                            data: studentEnrollCurrentData
+                        },
+                        {
+                            label: "2014",
+                            fillColor: "rgba(151,187,205,0.2)",
+                            strokeColor: "rgba(151,187,205,1)",
+                            pointColor: "rgba(151,187,205,1)",
+                            pointStrokeColor: "#fff",
+                            pointHighlightFill: "#fff",
+                            pointHighlightStroke: "rgba(151,187,205,1)",
+                            data: studentEnrollPreviousData
+                        }
+                    ]
+                };
+                console.log(studentEnrollmentData.datasets[0]);
+                var options = {
+
+                    legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<studentEnrollmentData.datasets.length; i++){%><li><span style=\"background-color:<%=studentEnrollmentData.datasets[i].strokeColor%>\"></span><%if(studentEnrollmentData.datasets[i].label){%><%=studentEnrollmentData.datasets[i].label%><%}%></li><%}%></ul>",
+                    bezierCurve: false,
+                    responsive: true
+                }
+                var studentEnrollmentChart = new Chart(studentEnrollment).Line(studentEnrollmentData, options);
+                var legend = studentEnrollmentChart.generateLegend();
+                $('#studentEnrollment').append(legend);
+            });
 
 
 
-
-
-
-            var studentEnrollmentChart = new Chart(studentEnrollment).Line(studentEnrollmentData, {bezierCurve: false});
         });
     </script>
 

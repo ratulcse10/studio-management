@@ -48,4 +48,15 @@ class StudentGraphController extends \BaseController {
 		return Response::json($process);
 	}
 
+	public function enrollData($year){
+		return DB::table('students')
+					->select( [
+								DB::raw("Month(created_at) as month"),
+								DB::raw('count(*) as value'),
+					])
+					->where(DB::raw('YEAR(created_at)'), '=', $year)
+					->groupBy('month')
+					->get();
+	}
+
 }

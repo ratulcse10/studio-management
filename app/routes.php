@@ -153,6 +153,7 @@ Route::group(array('before' => 'auth'), function()
 
 Route::get('graphdata/student/city',['as' => 'student.graph.city','uses' => 'StudentGraphController@cityData']);
 Route::get('graphdata/student/age',['as' => 'student.graph.age','uses' => 'StudentGraphController@ageData']);
+Route::get('graphdata/student/enroll/{year}',['as' => 'student.graph.enroll','uses' => 'StudentGraphController@enrollData']);
 
 Route::get('test',function(){
 //	$faker = Faker\Factory::create();
@@ -165,20 +166,24 @@ Route::get('test',function(){
 //		'to' => $to
 //	];
 
-$students = Student::get();
-	$friends = $students->lists('age');
-	$friends_count = array_count_values($friends);
-	ksort($friends_count);
-	$process = [];
 
-	foreach($friends_count as $key=> $value){
-		$obj = new stdClass();
-		$obj->value = $value;
-		$obj->age = $key;
-		array_push($process,$obj);
-	}
+	//dd(Carbon::createFromDate(2014, 1, 1));
+	$first = Carbon::now();
+	$first = $first->startOfYear();
 
-	return Response::json($process);
+	$second = Carbon::now();
+	$second = $second->subYear();
+	$second = $second->startOfYear();
+	//dd($second);
+
+	return  DB::table('students')
+				->select( [
+							DB::raw("Month(created_at) as month"),
+							DB::raw('count(*) as value'),
+				])
+				->where(DB::raw('YEAR(created_at)'), '=', 2014)
+				->groupBy('month')
+				->get();
 
 
 
