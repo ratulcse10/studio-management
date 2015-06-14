@@ -166,27 +166,6 @@ Route::get('test',function(){
 //		'to' => $to
 //	];
 
+	return Student::with('campaign')->get();
 
-	//dd(Carbon::createFromDate(2014, 1, 1));
-	$first = Carbon::now();
-	$first = $first->startOfYear();
-
-	$second = Carbon::now();
-	$second = $second->subYear();
-	$second = $second->startOfYear();
-	//dd($second);
-
-	return  DB::table('students')
-				->select( [
-							DB::raw("Month(created_at) as month"),
-							DB::raw('count(*) as value'),
-				])
-				->where(DB::raw('YEAR(created_at)'), '=', 2014)
-				->groupBy('month')
-				->get();
-
-
-
-
-	//dd(CustomHelper::userHasPermission($user,['dashboard_view','marketing_view'])) ;
 });

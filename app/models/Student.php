@@ -11,6 +11,10 @@ class Student extends \Eloquent {
 		return $this->belongsTo('User','created_by','id');
 	}
 
+	public function campaign(){
+		return $this->belongsTo('Campaign','campaign_id','id');
+	}
+
 	public function getAgeAttribute($value)
 	{
 		return $this->dob->age;

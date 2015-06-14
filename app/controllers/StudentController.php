@@ -23,7 +23,12 @@ class StudentController extends \BaseController {
 	 */
 	public function create()
 	{
+
+		//get all campaigns for campaign select box
+		$campaigns = Campaign::all()->lists('name','id');
+
 		return View::make('students.create')
+					->with('campaigns',$campaigns)
 					->with('title',"Create Student");
 	}
 
@@ -70,6 +75,7 @@ class StudentController extends \BaseController {
 		$student->dob = $data['dob'];
 		$student->gender = $data['gender'];
 		$student->created_by = Auth::user()->id;
+		$student->campaign_id = $data['campaign_id'];
 
 		if($student->save()){
 			return Redirect::route('student.index')->with('success','Student Created Successfully.');
@@ -99,10 +105,14 @@ class StudentController extends \BaseController {
 	 */
 	public function edit($id)
 	{
+
+		//get all campaigns for campaign select box
+		$campaigns = Campaign::all()->lists('name','id');
 		try{
 			$student = Student::findOrFail($id);
 			return View::make('students.edit')
 						->with('student',$student)
+						->with('campaigns',$campaigns)
 						->with('title','Edit Student');
 		}catch(Exception $ex){
 			return Redirect::route('student.index')->with('error','Something went wrong.Try Again.');
@@ -151,6 +161,7 @@ class StudentController extends \BaseController {
 		$student->phone = $data['phone'];
 		$student->dob = $data['dob'];
 		$student->gender = $data['gender'];
+		$student->campaign_id = $data['campaign_id'];
 
 		if($student->save()){
 			return Redirect::route('student.index')->with('success','Student Updated Successfully.');

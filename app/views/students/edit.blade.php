@@ -61,6 +61,13 @@
                             </div>
                         </div>
 
+                        <div class="form-group">
+                            {{ Form::label('campaign_id', 'Campaign', array('class' => 'col-md-4 control-label required')) }}
+                            <div class="col-md-8">
+                                {{ Form::select('campaign_id', $campaigns, null, array('class' => 'form-control', 'id' => 'campaign')) }}
+                            </div>
+                        </div>
+
                     </div>
 
 
@@ -135,6 +142,7 @@
                 format: 'yyyy-mm-dd'
             });
             $("#gender").select2();
+            $("#campaign").select2();
 
 
         });

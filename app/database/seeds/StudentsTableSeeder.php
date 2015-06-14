@@ -27,6 +27,7 @@ class StudentsTableSeeder extends Seeder {
 				'zipcode' => $faker->countryCode,
 				'state' => $faker->streetName,
 				'phone' => $faker->phoneNumber,
+				'campaign_id' => 1,
 				'dob' => $faker->dateTimeBetween($startDate = '-30 year', $endDate = 'now') ,
 				'gender' => $faker->randomElement(['female','male']),
 				'created_at' => $faker->dateTimeBetween($startDate = '-1 year', $endDate = 'now')

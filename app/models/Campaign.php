@@ -9,6 +9,10 @@ class Campaign extends \Eloquent {
 		return ['created_at','updated_at','deleted_at','from','to'];
 	}
 
+	public function students(){
+		return $this->hasMany('Student','campaign_id','id');
+	}
+
 
 
 	public function ad()
