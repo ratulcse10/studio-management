@@ -9,7 +9,11 @@ class StudentsTableSeeder extends Seeder {
 	{
 		$faker = Faker::create();
 
-		$city_array = [];
+		$state_array = ['California'];
+		$city_array = ['Vernon','East Los Angeles','Huntington Park','Florence-Graham',
+					'Maywood','Walnut Park','Bell','South Pasadena','Commerce','Alhambra','Monterey Park'];
+					/*'Cudahy','West Hollywood','South Gate','View Park-Windsor Hills','Glendale','Ladera Heights',
+					'Bell Gardens','Montebello','South San Gabriel','Lynwood','Beverly Hills','Willowbrook','Compton','La Crescenta-Montrose'];*/
 
 		for($i =0 ; $i<5; $i++){
 			$city_array[$i] = $faker->city;
@@ -23,9 +27,9 @@ class StudentsTableSeeder extends Seeder {
 				'email' => $faker->unique()->email,
 				'created_by' => 1,
 				'address' => $faker->address,
-				'city' => $city_array[$faker->numberBetween(0,4)],
+				'city' => $city_array[$faker->numberBetween(0,10)],
 				'zipcode' => $faker->countryCode,
-				'state' => $faker->streetName,
+				'state' => 'California',
 				'phone' => $faker->phoneNumber,
 				'campaign_id' => 1,
 				'dob' => $faker->dateTimeBetween($startDate = '-30 year', $endDate = 'now') ,
