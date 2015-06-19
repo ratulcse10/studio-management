@@ -16,6 +16,7 @@ class CustomHelper{
 
 	}
 
+
 	public static function assignUserPermission(User $newUser,$permissions){
 
 		try{
@@ -41,6 +42,17 @@ class CustomHelper{
 		}
 
 	}
+
+	/**
+	 * Check permission/permissions for specific user.
+	 *
+	 * @param Object $user User object.
+	 *
+	 * @param mixed[] $permissions Permissions Names.
+	 *
+	 * @return boolean Returns true/false.
+	 */
+
 
 	public static function userHasPermission(User $user,$permissions){
 		if($user->hasRole(Config::get('customConfig.roles.admin'))){

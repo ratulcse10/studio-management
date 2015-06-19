@@ -165,7 +165,7 @@ Route::get('test',function(){
 //		'from' => $from,
 //		'to' => $to
 //	];
-
+	dd(CustomHelper::userHasPermission(Auth::user(),['dashboard_view']));
 	return Student::with('campaign')->get();
 
 });
