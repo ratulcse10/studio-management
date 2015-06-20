@@ -128,7 +128,27 @@
                         <li>
                             <a href="#">
                                 <i class="icon-tag"></i>
-                                Tasks</a>
+                                Tasks
+                            </a>
+                            <ul class="sub-menu">
+                                <li>
+                                    <a href="javascript:;">
+                                        <i class="icon-settings"></i> Projects <span class="arrow"></span>
+                                    </a>
+
+                                </li>
+                                <li>
+                                    <a href="javascript:;">
+                                        <i class="icon-globe"></i> Tasks <span class="arrow"></span>
+                                    </a>
+
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="icon-bar-chart"></i>
+                                        Events </a>
+                                </li>
+                            </ul>
                         </li>
 
                         <li>
